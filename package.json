@@ -1,0 +1,27 @@
+{
+  "name": "rasik-bhita",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --port 8000",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "next": "14.2.3",
+    "react": "^18",
+    "react-bootstrap": "^2.10.2",
+    "react-dom": "^18",
+    "react-feather": "^2.0.10",
+    "react-slick": "^0.30.2",
+    "sharethis-reactjs": "^1.6.0",
+    "slick-carousel": "^1.8.1",
+    "yet-another-react-lightbox": "^3.18.0"
+  },
+  "devDependencies": {
+    "eslint": "^8",
+    "eslint-config-next": "14.2.3"
+  }
+}
