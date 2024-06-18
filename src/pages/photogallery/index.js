@@ -6,7 +6,7 @@ import Loader from "@/component/Loader";
 
 import React, { useEffect, useState } from "react";
 import GalleryService from "@/services/Gallery";
-import { ZoomIn } from "react-feather";
+import { ZoomIn, ChevronLeft, ChevronRight } from "react-feather";
 import Lightbox from "yet-another-react-lightbox";
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
@@ -25,6 +25,7 @@ const PhotoGallery = ({ imageData }) => {
   const [open, setOpen] = useState(false);
   const [slides, setSlides] = useState([]);
   const [clickedIndex, setClickedIndex] = useState(0);
+  const [catRange, setCatRange] = useState([0, 4]);
 
   useEffect(() => {
     const getPhotos = async () => {
@@ -76,6 +77,20 @@ const PhotoGallery = ({ imageData }) => {
     setOpen(true);
   }
 
+  function handlePrev() {
+    setCatRange((prev) => [
+      Math.max(prev[0] - 4, 0),
+      Math.max(prev[1] - 4, 4),
+    ]);
+  }
+
+  function handleNext() {
+    setCatRange((prev) => [
+      Math.min(prev[0] + 4, catList.length - 4),
+      Math.min(prev[1] + 4, catList.length),
+    ]);
+  }
+
   return (
     <>
       {loading && <Loader />}
@@ -86,57 +101,41 @@ const PhotoGallery = ({ imageData }) => {
         <Row>
           <Col className="gallery">
             <div className="threebuttons mb-3">
+              {catRange[0] > 0 && (
+                <ChevronLeft className="arrow" onClick={handlePrev} />
+              )}
               <div
                 className={selectedCat == "all" ? "button1" : "button2"}
-                onClick={categoryPress.bind("catName", "all")}
+                onClick={() => categoryPress("all")}
               >
                 All Category
               </div>
-              {catList.map((item, index) => {
+              {catList.slice(catRange[0], catRange[1]).map((item, index) => {
                 return (
                   <div
                     key={index}
                     className={selectedCat == item ? "button1" : "button2"}
-                    onClick={categoryPress.bind("catName", item)}
+                    onClick={() => categoryPress(item)}
                   >
                     {item}
                   </div>
                 );
               })}
+              {catRange[1] < catList.length && (
+                <ChevronRight className="arrow" onClick={handleNext} />
+              )}
             </div>
           </Col>
         </Row>
 
         <Row>
           {imageList.map((item, index) => {
-            if (selectedCat == "all") {
+            if (selectedCat == "all" || item.category_name == selectedCat) {
               return (
-                <Col xs={12} md ={6} lg={4}>
+                <Col xs={12} md={6} lg={4} key={index}>
                   <div
                     className="galleryWrapImg"
-                    onClick={openLightbox.bind("selectedInbox", index)}
-                  >
-                    <div className="content">
-                      <div className="content-overlay"></div>
-                      <div className="galleryWrapImgBox">
-                        <img src={item.gallery_img_path} alt="gallery" />
-                      </div>
-                      <div className="content-details fadeIn-top">
-                        <div className="zoomWrap">
-                          <ZoomIn />
-                        </div>
-                      </div>
-                    </div>
-                    <h6 className="gallery-heading-txt">{item.file_name}</h6>
-                  </div>
-                </Col>
-              );
-            } else if (item.category_name == selectedCat) {
-              return (
-                <Col xs={12} md ={6} lg={4}>
-                  <div
-                    className="galleryWrapImg"
-                    onClick={openLightbox.bind("selectedInbox", index)}
+                    onClick={() => openLightbox(index)}
                   >
                     <div className="content">
                       <div className="content-overlay"></div>

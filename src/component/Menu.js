@@ -161,6 +161,7 @@ const Menu = () => {
                           return (
                             <NavDropdown.Item
                               key={innerIndex}
+                              className="dropdown-with-items-second-level"
                               href={`/courselist/${innerItem.course_name.replace(/\s+/g, "-")}`}
                             >
                               {innerItem.course_name}
@@ -175,6 +176,7 @@ const Menu = () => {
 
                 <NavDropdown.Item href="/elearning" className="nav-link"> e-Learning</NavDropdown.Item>
                 <NavDropdown.Item href="/coursefee" className="nav-link"> Course Fees Structure</NavDropdown.Item>
+                <NavDropdown.Item href="/studentprojects" className="nav-link"> Student Project</NavDropdown.Item>
               </NavDropdown>
               <NavDropdown title="Activities" id="basic-nav-dropdown">
                 {cmsEntity.map((item, index) => {

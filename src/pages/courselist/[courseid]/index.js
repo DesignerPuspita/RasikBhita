@@ -11,47 +11,11 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 
 const CourseDetails = ({courseDurationMonth,courseDurationYear,courseDetails,courseOption}) => {
-    // console.log('params', params);
-    // const router = useRouter();
-  
-    // console.log('routerrrrrrrr', router.query.courseid);
-    // const courseId = router.query.courseid
-    // const [courseDetails, setCourseDetails] = useState(null); 
-    // const [courseDurationMonth, setCourseDurationMonth] = useState('');
-    // const [courseDurationYear,setCourseDurationYear] = useState('');
-    const [courseDetailsError, setCourseDetailsError] = useState(null); 
+   const [courseDetailsError, setCourseDetailsError] = useState(null); 
     const [loading, setLoading] = useState(true);      
-    // const [courseOption, setCourseOption] = useState([]);     
-
-    // useEffect(() => {
-    //    const CourseDetailsData = async () => {
-    //         try {
-    //             const CourseDetailsDataResponse = await CourseService.getCourseDetails(courseId);
-    //             console.log(CourseDetailsDataResponse,"meow");
-    //             if (CourseDetailsDataResponse.error === false) {
-    //                 setCourseDurationMonth(CourseDetailsDataResponse.body.month)
-    //                 setCourseDurationYear(CourseDetailsDataResponse.body.year)
-    //                 setCourseDetails(CourseDetailsDataResponse.body.coursedetail);
-    //                 setCourseOption(CourseDetailsDataResponse.body.coursegroup)
-    //                 setLoading(false);
-    //                 setCourseDetailsError(null);
-    //             } else {  
-    //                 setLoading(false);
-    //                 setCourseDetails(null);
-    //                 setCourseDetailsError(CourseDetailsDataResponse.errormessage);
-                   
-    //             }
-    //         } catch (error) {
-    //             // console.log('Course Details Data Fetch', error);
-    //         }
-    //     };
-
-    //     CourseDetailsData();
-    // }, []);
-
-    return (
+   return (
         <>
-            {/* {loading && <Loader />} */}
+            
             <Head>
             <title>{generateMetadata(courseDetails).title}</title>
             <meta name="description" content={generateMetadata(courseDetails).description} />
@@ -170,8 +134,10 @@ export async function getServerSideProps(context) {
     // console.log('courseIdcourseIdcourseIdcourseId', courseid);
     // console.log('context.query:', context.query);
     // console.log('Requested URL:', context.req.url);
+    
     try {
         const CourseDetailsDataResponse = await CourseService.getCourseDetails(courseid);
+        console.log('courseOption', CourseDetailsDataResponse.body.coursegroup);
         if (CourseDetailsDataResponse.error === false) {
             return {
                 props: {
@@ -206,10 +172,16 @@ export async function getServerSideProps(context) {
   }
   
   export function generateMetadata(courseDetails) {
+    if (!courseDetails || !courseDetails.title || !courseDetails.meta_description) {
+        return {
+            title: 'Default Title',
+            description: 'Default Description',
+        };
+    }
     return {
-      title: courseDetails.title,
-      description: courseDetails.meta_description,
+        title: courseDetails.title,
+        description: courseDetails.meta_description,
     };
-  }
+}
 export default CourseDetails;
 

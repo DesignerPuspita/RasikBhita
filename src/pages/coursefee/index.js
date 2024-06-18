@@ -39,7 +39,7 @@ const CourseFees = ({ courseFee }) => {
                         {item.year !== 0 && `${item.year} year `} {item.month}{" "}
                         months
                       </td>
-                      <td className="tot_coursefee-col">{item?.total_course_fees}</td>
+                      <td className="tot_coursefee-col">₹ {item?.total_course_fees}</td>
                       <td>{item?.admission_fees}</td>
                       <td>{item?.fees_to_installments}</td>
                     </tr>

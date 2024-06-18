@@ -3,12 +3,18 @@ import { Row, Col } from "react-bootstrap";
 import { Container } from "react-bootstrap";
 import PlacementService from "@/services/Placement";
 import Breadcrumb from "@/component/Breadcrumb";
-const Placement = ({placementData}) => {
+
+const Placement = ({ placementData }) => {
   const currentYear = new Date().getFullYear();
   const [YearSelect, setYearSelect] = useState(currentYear);
+
   const handleYear = (YearVal) => {
+    console.log('year', YearVal);
     setYearSelect(YearVal);
-  };  
+  };
+
+  // Extract unique years
+  const uniqueYears = [...new Set(placementData.map(item => item.years))];
 
   return (
     <>      
@@ -23,19 +29,17 @@ const Placement = ({placementData}) => {
               onChange={(e) => handleYear(e.target.value)}
               className="form-control-search"
             >
-              {placementData?.map((item, index) => {
-                return (
-                  <option onClick={() => handleYear(item.years)} key={index}>
-                    {item.years}
-                  </option>
-                );
-              })}
+              {uniqueYears.map((year, index) => (
+                <option key={index} value={year}>
+                  {year}
+                </option>
+              ))}
             </select>
           </Col>
         </Row>
 
         <Row>
-          {placementData?.map((item, index) => {
+          {placementData.map((item, index) => {
             if (YearSelect == item.years) {
               return (
                 <Col key={index} lg={4}>
@@ -62,15 +66,14 @@ const Placement = ({placementData}) => {
 
 export default Placement;
 
-
-export async function getServerSideProps(){
+export async function getServerSideProps() {
   const currentYear = new Date().getFullYear();
   const placementDataResponse = await PlacementService.placement();
-  const placementData = placementDataResponse.error==false?placementDataResponse.body:[]
+  const placementData = placementDataResponse.error == false ? placementDataResponse.body : []
 
-  return{
-    props:{
-      placementData:placementData
+  return {
+    props: {
+      placementData: placementData
     }
   }
 }

@@ -58,9 +58,8 @@ const Footer = () => {
                     <span></span>
                     <span></span>
                 </button> */}
-                <div className="video-play-btn ripple">
-                    <a href="#" className="play-btn"> Appeal </a>
-                </div>
+                <a href="#" className="play-btn"> <span className='donate-txt'>Donate Online </span></a>
+                
             </div>
             <Container>
 
@@ -141,7 +140,7 @@ const Footer = () => {
                                     <ul>
                                         <li> <Link href ='/about/our-origin'>Our Origin</Link></li>
                                         <li><Link href='/about/premises-at-dakhineswar'>Premises at Dakshineswar</Link></li>
-                                        <li><Link href='/about/premises-at-dum-dum-park'>Premises at Dakshineswar</Link></li>
+                                        <li><Link href='/about/premises-at-dum-dum-park'>Premises at Dumdum Park</Link></li>
                                         <li><Link href='https://docs.google.com/forms/d/e/1FAIpQLSeOGtWKGYI7pLUJz4CBawWymVZZMYrProbRlZtkGA7F01FwNw/viewform?pli=1'>Admissions</Link></li>
                                     </ul>
                                 </Col>
@@ -156,24 +155,6 @@ const Footer = () => {
                             </Row> 
                         </div>
                     </Col> 
-
-                    {/* <Col xs={12} lg={3} md={6}>
-                        <div className='OurServices'>
-                            <h6>Our Courses</h6>
-                            <ul>
-                                <li>Communicative English</li>
-                                <li>Financial Accounting</li>
-                                <li>Computer Programming</li>
-                                <li>Website Designing</li>
-                                <li>Multimedia Course</li>
-                                <li>Fundamental & Advanced Office</li>
-                            </ul>
-                        </div>
-                      
-                    </Col> */}
-
-
-
                     <Col lg={4} md={6}>
                         <div className='contactdetails'>
                             <h6>Contact Details</h6>
