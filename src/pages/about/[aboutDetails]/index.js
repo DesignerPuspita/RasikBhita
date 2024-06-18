@@ -28,16 +28,16 @@ const AboutDetails = ({storyIdWithoutHyphen,cmsEntity,cmsImage,cmsStoryTableEnti
             });
           }
           return (
-            <section className="cmsBg py-5">
+            <section className="cmsBg py-5"  key={entityIndex}>
               <Container>
-                <Row key={entityIndex}>
+                <Row>
                   <Col xs={12}>
                     <div className="cmsWrap">
                       {arr.length > 1 && (
                         <div className="officeimage-left">
                           <Carousel>
                             {relatedImages.map((image, imageIndex) => (
-                              <Carousel.Item>
+                              <Carousel.Item  key={imageIndex}>
                                 <div className="text-container-under-image">
                                   <img
                                     src={image.cms_body_img_path}

@@ -138,7 +138,7 @@ const NewsArchive = ({ categoryData }) => {
             <Row>
               {otherYear?.map((item, index) => {
                 return (
-                  <Col xs={12} lg={6}>
+                  <Col xs={12} lg={6} key={index}>
                     <div className="textarea my-4" key={index}>
                       <div className="my-2">
                         <div className="listingimgNews">

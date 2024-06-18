@@ -13,7 +13,6 @@ import CarousalSlider from "@/component/CarousalSlider";
 import RedButton from "@/component/RedButton";
 import Link from 'next/link';
 
-
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home({
@@ -108,9 +107,9 @@ export default function Home({
                 <RedButton buttonText='View All Courses' />
               </a> */}
               <div class="d-flex justify-content-center my-3">
-                <a href="/courselist">
+                <Link href="/courselist">
                   <div class="hvr-sweep-to-right">View All Courses</div>
-                </a>
+                </Link>
               </div>
             </Col>
           </Row>
@@ -139,8 +138,8 @@ export default function Home({
               </h3>
               <p className="contentTxtGrey">
                 The house of Rasik in Dakshineswar, now houses the Educational
-                and Cultural unit of Sri Sarada Math - 'Sri Sarada Math - Rasik
-                Bhita' which provides vocational and technical education to
+                and Cultural unit of Sri Sarada Math - &apos;Sri Sarada Math - Rasik
+                Bhita&apos; which provides vocational and technical education to
                 women.
               </p>
               <div className="ContentArea py-3">
@@ -156,7 +155,7 @@ export default function Home({
                             <div className="rasikstorytext">
                               <h6>{item.heading}</h6>
                               <p>{item.description}</p>
-                              <a href={item.redirect_url}>Read More...</a>
+                              <Link href={item.redirect_url}>Read More...</Link>
                             </div>
                           </div>
                         </Col>
@@ -207,7 +206,7 @@ export default function Home({
               </h6>
               <h3 className="hmTextTitle">Sri Sarada Math Rasik Bhita
                 <span> Corporate Connect</span></h3>
-              <p className="contentTxtGrey">The house of Rasik in Dakshineswar, now houses the Educational and Cultural unit of Sri Sarada Math - 'Sri Sarada Math - Rasik Bhita' which provides vocational and technical education to women.</p>
+              <p className="contentTxtGrey">The house of Rasik in Dakshineswar, now houses the Educational and Cultural unit of Sri Sarada Math - &apos;Sri Sarada Math - Rasik Bhita&apos; which provides vocational and technical education to women.</p>
               <div className="ContentArea py-3">
                 <Row>
 
@@ -222,7 +221,7 @@ export default function Home({
                             <div className="rasikstorytext">
                               <h6>{item.heading}</h6>
                               <p>{item.description}</p>
-                              <a href={item.redirect_url}>Read More...</a>
+                              <Link href={item.redirect_url}>Read More...</Link>
                             </div>
                           </div>
                         </Col>
@@ -284,9 +283,9 @@ export default function Home({
               <Row>
                 <Col xs={12}>
                   <div className="d-flex justify-content-center my-3">
-                    <a href={"/studentprojects"}>
+                    <Link href={"/studentprojects"}>
                       <RedButton buttonText='View Project' />
-                    </a>
+                    </Link>
                   </div>
 
                 </Col>

@@ -41,7 +41,7 @@ const Page = ({ newsData, newsImageData, allNewsData }) => {
                 <Carousel>
                   {newsImageData?.map((item, index) => {
                     return (
-                      <Carousel.Item>
+                      <Carousel.Item key={index}>
                         <div className="newsImageSingle">
                           <img src={item.image_url} alt="image" />
                         </div>
@@ -94,7 +94,7 @@ const Page = ({ newsData, newsImageData, allNewsData }) => {
               <h3 className="subbTitle">Upcoming Events</h3>
               {allNewsData.map((item, index) => {
                 return (
-                  <div className="news-card-recent-img-box">
+                  <div className="news-card-recent-img-box"  key={index}>
                     <div className="newsRightImageWrap">
                       <div className="newsRightImage">
                         <img
