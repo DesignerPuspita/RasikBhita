@@ -39,7 +39,40 @@ body {
 .srchIcon {
   padding-right: 15px;
 }
+.topbanner .sliderBtn .hvr-sweep-to-right{display:inline-block;}
+/*Slick Arrow Style*/
+.slick-arrow {
+  position: absolute;
+  bottom: -88px;
+  z-index: 1;
+  background-color: rgba(201, 199, 199, 0.7);
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.slick-arrow.next-arrow {
+  left: 44%; /* Center align */
+  transform: translateX(60px) translateY(-44%);
+}
+
+.slick-arrow.prev-arrow {
+  left: 44%; /* Center align */
+  transform: translateX(0) translateY(-44%);
+}
+
+.slick-arrow svg {
+  width: 24px;
+  height: 24px;
+}
+
+/*Slick Arrow Style*/
+.pad-70{padding-bottom:70px;}
+.courseName p{font-weight:400; color:#6E7075;}
+.carousel-caption p{color:#fff;}
 .hvr-sweep-to-right {
   display: inline-block;
   vertical-align: middle;
@@ -5314,7 +5347,7 @@ a {
   position: absolute;
   z-index: 1;
   left: 20px;
-  top: 50%;
+  top: 20px;
   border: 1px dotted;
   border-width: 1px 0 0;
   transform: translateY(-50%);
@@ -5634,6 +5667,11 @@ a {
 }
 .mtt-2{position:relative; top:10px;}
 /*Puspita*/
+.placement-cont .student-card-text p {
+  min-height: auto;
+  padding:10px 0;
+}
+.studentCardWrapPlacement{width:100%;display: flex;}
 .dropdown-with-items.nav-item.show.dropdown a:hover{color:#fff!important;}
 .dropdown-with-items-second-level {
   word-break: break-word;
@@ -6425,10 +6463,10 @@ background: linear-gradient(0deg, rgba(0,172,238,1) 0%, rgba(2,126,251,1) 100%);
   right: 0;
   bottom: 0;
   left: 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
+  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(175,175,175,0) 50%, rgba(0,0,0,1) 100%, rgba(0,212,255,1) 100%);
   z-index: 1;
 }
-
+/* .carousel-caption h3{text-shadow: 2px 2px 5px #000;} */
 .carousel-caption {
   z-index: 2;
 }
@@ -6479,7 +6517,7 @@ background: linear-gradient(0deg, rgba(0,172,238,1) 0%, rgba(2,126,251,1) 100%);
 }
 
 .student-card-text {
-  width: calc(100% - 80px);
+  width: calc(100% - 133px);
 }
 
 .studentCardIMG img {
@@ -6731,7 +6769,8 @@ background: linear-gradient(0deg, rgba(0,172,238,1) 0%, rgba(2,126,251,1) 100%);
 
 .slick-arrow.prev-arrow,
 .slick-arrow.next-arrow {
-  display: none;
+  /* display: none; */
+  cursor:pointer;
 }
 
 .slick-slider .card {
@@ -6739,7 +6778,7 @@ background: linear-gradient(0deg, rgba(0,172,238,1) 0%, rgba(2,126,251,1) 100%);
 }
 
 .QuoteImage-body h5 {
-  font-size: 18px;
+  font-size: 16px;
   line-height: 25px;
   color: #000;
   font-weight: 600;
@@ -6747,6 +6786,7 @@ background: linear-gradient(0deg, rgba(0,172,238,1) 0%, rgba(2,126,251,1) 100%);
   padding: 0;
   font-style: normal;
   margin-top: 15px;
+  text-align:left;
 }
 
 .QuoteImage-body strong {
@@ -7822,7 +7862,11 @@ padding:10px; text-align:center;}
   color: #fff;
   border: #E42032;}
 .btn-activitesHmBtn{color:#fff!important;}
-.donate-txt{position:relative; top:10px;left:-17px;}
+.donate-txt{position: relative;
+  top: 40px;
+  left: -7px;
+  line-height: 23px;}
+.courselist a{color:#fff;}
 a.play-btn {
   display: inline-block;
   width: 150px;

@@ -162,7 +162,7 @@ const Menu = () => {
                             <NavDropdown.Item
                               key={innerIndex}
                               className="dropdown-with-items-second-level"
-                              href={`/courselist/${innerItem.course_name.replace(/\s+/g, "-")}`}
+                              href={`/courselist/${innerItem.course_name.replace(/\s+/g, "-")}/${innerItem.course_id}`}
                             >
                               {innerItem.course_name}
                             </NavDropdown.Item>

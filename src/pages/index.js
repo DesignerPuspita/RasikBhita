@@ -12,10 +12,13 @@ import Carousel from "react-bootstrap/Carousel";
 import CarousalSlider from "@/component/CarousalSlider";
 import RedButton from "@/component/RedButton";
 import Link from 'next/link';
+import { Play } from 'react-feather';
 
 
 const inter = Inter({ subsets: ["latin"] });
-
+const handleClick = (item) => {
+  window.location.href = `http://${item.buttonurl}`;
+};
 export default function Home({
   homeCarouselData,
   homeCourseListData,
@@ -38,6 +41,7 @@ export default function Home({
               <div>
                 <Carousel>
                   {homeCarouselData?.map((item, index) => {
+                    
                     return (
                       <Carousel.Item key={index}>
                         <div className="image-container">
@@ -51,8 +55,11 @@ export default function Home({
                           <h3>{item.bigheading}</h3>
                           <p>
                             {item.shortdesc}
-                            <br></br>
-                            <Button
+                            </p> 
+                            <div className="sliderBtn mt-3">
+                                <RedButton buttonText={<><Play/>{item.buttonnmae}</>}  onClick={()=>{handleClick(item)}}/>
+                            </div>  
+                            {/* <Button
                               className="topbannerbutton"
                               href={`http://${item.buttonurl}`}
                             >
@@ -61,8 +68,8 @@ export default function Home({
                                 alt="pbutton"
                               ></img>
                               {item.buttonnmae}
-                            </Button>
-                          </p>
+                            </Button> */}
+                          
                         </Carousel.Caption>
                       </Carousel.Item>
                     );
@@ -107,9 +114,9 @@ export default function Home({
               {/* <a href={"/courselist"}>
                 <RedButton buttonText='View All Courses' />
               </a> */}
-              <div class="d-flex justify-content-center my-3">
+              <div className="d-flex justify-content-center mt-5">
                 <a href="/courselist">
-                  <div class="hvr-sweep-to-right">View All Courses</div>
+                  <div className="hvr-sweep-to-right">View All Courses</div>
                 </a>
               </div>
             </Col>
@@ -299,7 +306,7 @@ export default function Home({
 
 
 
-        <Container className="mt-80">
+        <Container className="mt-80 pad-70">
           <Row>
             <Col className="FirstJob mb-4">
               <h6 className="mb-2">

@@ -9,7 +9,6 @@ const Placement = ({ placementData }) => {
   const [YearSelect, setYearSelect] = useState(currentYear);
 
   const handleYear = (YearVal) => {
-    console.log('year', YearVal);
     setYearSelect(YearVal);
   };
 
@@ -17,7 +16,7 @@ const Placement = ({ placementData }) => {
   const uniqueYears = [...new Set(placementData.map(item => item.years))];
 
   return (
-    <>      
+    <>
       <Container fluid className="px-0">
         <Breadcrumb breadCrumbCurrentPage="Placement" pageTitle="Placement" />
       </Container>
@@ -28,6 +27,7 @@ const Placement = ({ placementData }) => {
             <select
               onChange={(e) => handleYear(e.target.value)}
               className="form-control-search"
+              defaultValue={YearSelect}
             >
               {uniqueYears.map((year, index) => (
                 <option key={index} value={year}>
@@ -44,16 +44,22 @@ const Placement = ({ placementData }) => {
               return (
                 <Col key={index} lg={4}>
                   <div className="student-card">
-                    <div className="studentCardIMG">
-                      <img src={item?.image} alt="student" />
+                    <div className="studentCardWrapPlacement">
+
+                      <div className="studentCardIMG">
+                        <img src={item?.image} alt="student" />
+                      </div>
+                      <div className="student-card-text">
+                        <h5>{item?.studentname}</h5>
+                        <h6>{item?.occupation}</h6>
+                        <p>{item?.schoolname}</p>
+
+                      </div>
                     </div>
-                    <div className="student-card-text">
-                      <h5>{item?.studentname}</h5>
-                      <h6>{item?.occupation}</h6>
-                      <p>{item?.schoolname}</p>
-                      <p>{item?.description}</p>
-                    </div>
+
+                    <p>{item?.description}</p>
                   </div>
+
                 </Col>
               );
             }

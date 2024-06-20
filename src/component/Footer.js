@@ -58,7 +58,7 @@ const Footer = () => {
                     <span></span>
                     <span></span>
                 </button> */}
-                <a href="#" className="play-btn"> <span className='donate-txt'>Donate Online </span></a>
+                <a href="#" className="play-btn"> <span className='donate-txt'><span className='d-block'>Donate</span> <span className='d-block'>Online</span> </span></a>
                 
             </div>
             <Container>
