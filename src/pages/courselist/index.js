@@ -33,12 +33,12 @@ const CourseList = ({courseDetails}) => {
                     />
                   </div> 
                   <div className='pad-15'>
-                    <p className='courselist-coursename'>{item?.course_name}</p>
+                    <p className='courselist-coursename listingCourseName'>{item?.course_name}</p>
                     <div 
                       className='courselist-short-desc listingDataCourse' 
                       dangerouslySetInnerHTML={{__html: item?.course_desc}}
                     ></div>
-                    <Link href={`/courselist/${courseSlug}/${item.course_id}`}>
+                    <Link href={`/courselist/${courseSlug}/${item.course_id}`} className='listVwBtn'>
                       <RedButton buttonText='View More'/>
                     </Link>
                   </div>

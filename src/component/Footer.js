@@ -149,7 +149,7 @@ const Footer = () => {
                                         <li><Link href ='/news'>Recent News</Link></li>
                                         <li><Link href ='/photogallery'>Recent Photo</Link></li> 
                                         <li><Link href ='/placement'>Placement</Link></li>
-                                        <li><Link href ='/'>Press Review</Link></li>
+                                        <li><Link href ='/pressreview'>Press Review</Link></li>
                                     </ul>
                                 </Col>
                             </Row> 

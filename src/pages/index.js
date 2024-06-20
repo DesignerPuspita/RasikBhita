@@ -16,7 +16,7 @@ import { Play } from 'react-feather';
 
 const inter = Inter({ subsets: ["latin"] });
 const handleClick = (item) => {
-  window.location.href = `http://${item.buttonurl}`;
+  window.open(item.buttonurl, '_blank');
 };
 export default function Home({
   homeCarouselData,
@@ -58,17 +58,6 @@ export default function Home({
                             <div className="sliderBtn mt-3">
                                 <RedButton buttonText={<><Play/>{item.buttonnmae}</>}  onClick={()=>{handleClick(item)}}/>
                             </div>  
-                            {/* <Button
-                              className="topbannerbutton"
-                              href={`http://${item.buttonurl}`}
-                            >
-                              <img
-                                src="images/play-button.png"
-                                alt="pbutton"
-                              ></img>
-                              {item.buttonnmae}
-                            </Button> */}
-                          
                         </Carousel.Caption>
                       </Carousel.Item>
                     );
@@ -104,7 +93,7 @@ export default function Home({
             </Col>
           </Row>
 
-          <Row className="CourseCards mt-3">
+          <Row className="CourseCards">
             <CarousalSlider page="course" data={homeCourseListData} />
           </Row>
 
@@ -113,11 +102,11 @@ export default function Home({
               {/* <a href={"/courselist"}>
                 <RedButton buttonText='View All Courses' />
               </a> */}
-              <div className="d-flex justify-content-center mt-5">
+              {/* <div className="d-flex justify-content-center mt-5">
                 <Link href="/courselist">
                   <div className="hvr-sweep-to-right">View All Courses</div>
                 </Link>
-              </div>
+              </div> */}
             </Col>
           </Row>
         </Container>
