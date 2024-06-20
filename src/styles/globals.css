@@ -32,9 +32,9 @@ body {
   letter-spacing: 0.1px;
   font-size: 14px;
 }
-
+.stickyBttnn{position:fixed; bottom:97px; right:109px; z-index:99;}
 /*TopBar*/
-/*->added from external source*/
+
 
 .srchIcon {
   padding-right: 15px;
@@ -476,7 +476,10 @@ h5 {
 .ourorigintext h6 {
   padding-top: 0px;
 }
-
+.donate-txt{position: relative;
+  top: 40px;
+  left: -7px;
+  line-height: 23px;}
 /*corporate connect heading area*/
 .CorpConnectRow {
   margin-bottom: 0;
@@ -2848,10 +2851,16 @@ a {
 /*767*/
 
 @media (max-width: 575.98px) {
+  .donate-txt {
+    position: relative;
+    top: 33px;
+    left: -23px;
+    line-height: 23px;
+}
   .stickyBttnn {
     position: fixed;
-    bottom: 57px;
-    right: 77px;
+    bottom: 87px;
+    right: 82px;
     z-index: 99;
 }
 a.play-btn {
@@ -6007,7 +6016,6 @@ background: linear-gradient(0deg, rgba(0,172,238,1) 0%, rgba(2,126,251,1) 100%);
 .srchBlock .btn.btn-primary{line-height:38px;}
 .srchImgHeight{width:100%; height:314px;border: 1px solid #cecece; border-radius:10px;}
 .image-container .img-fluid{width:100%;}
-.stickyBttnn{position:fixed; bottom:97px; right:109px; z-index:99;}
 .topIconBox{width:30px; margin-right:3px;}
 .topIconText{color:#fff; display: flex;}
 .topBarBox{width:100%; position:relative; height:24px; overflow: hidden;}
@@ -7894,10 +7902,6 @@ padding:10px; text-align:center;}
   color: #fff;
   border: #E42032;}
 .btn-activitesHmBtn{color:#fff!important;}
-.donate-txt{position: relative;
-  top: 40px;
-  left: -7px;
-  line-height: 23px;}
 .courselist a{color:#fff;}
 
 .ripple {
