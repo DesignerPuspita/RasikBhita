@@ -12,6 +12,7 @@ import { PhoneCall } from "react-feather";
 import { Mail } from "react-feather";
 import { Book } from "react-feather";
 import { Clock } from "react-feather";
+import  Link  from 'next/link';
 
 const SearchResults = () => {
   const params = useSearchParams();
@@ -104,7 +105,7 @@ const SearchResults = () => {
                   
                   
                     <div className="mt-3">
-                      <a href="/videogallery" className="hvr-sweep-to-right">View Details</a>
+                      <Link href="/videogallery" className="hvr-sweep-to-right">View Details</Link>
                       
                     </div>
                                    
@@ -140,11 +141,11 @@ const SearchResults = () => {
                   </Row> */}
                   
                     <div className="mt-3">
-                      <a className="hvr-sweep-to-right"
+                      <Link className="hvr-sweep-to-right"
                         href={`courselist/${item.course_name.replace(/\s+/g, "-")}`}
                       >
                         View Details
-                      </a>
+                      </Link>
                     </div>
                   
                 </div>
@@ -215,11 +216,11 @@ const SearchResults = () => {
                   </Col>
                   <Row>
                     <Col xs={12} lg={3} className="mt-3">
-                      <a className="hvr-sweep-to-right"
+                      <Link className="hvr-sweep-to-right"
                         href={`/contact`}
                       >
                         View Details
-                      </a>
+                      </Link>
                     </Col>
                   </Row>
                 </div>
@@ -246,11 +247,11 @@ const SearchResults = () => {
                     </div>                  
                   </div>
                     <div className="mt-3">
-                      <a className="hvr-sweep-to-right"
+                      <Link className="hvr-sweep-to-right"
                          href={item && item.bigHeading ? `about/${item.bigHeading.replace(/\s+/g, "-")}` : '#'}
                       >
                         View Details
-                      </a>
+                      </Link>
                     </div>
                 </div>
                 </Col>
@@ -285,11 +286,11 @@ const SearchResults = () => {
                   </Row>
                   </div> */}                  
                     <div className="mt-3">
-                      <a className="hvr-sweep-to-right"
+                      <Link className="hvr-sweep-to-right"
                         href={`/news/${item.desc_heading.replace(/\s+/g, "-")}`}
                       >
                         View Details
-                      </a>
+                      </Link>
                     </div>                  
                 </div>
                 </Col>

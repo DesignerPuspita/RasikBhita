@@ -72,8 +72,8 @@ const NewsListing = ({categoryData,currentYear}) => {
             <Col xs={12} lg={8}>
               {otherYear?.map((item, index) => {
                 return (
-                  <div className="textarea my-4">
-                    <div key={index} className="my-2">
+                  <div className="textarea my-4" key={index} >
+                    <div className="my-2">
                       <div className="listingimgNews">
                         {item?.recentEventImages.map((eachImage, index) => {
                           return (
@@ -114,8 +114,8 @@ const NewsListing = ({categoryData,currentYear}) => {
               <Col xs={12} lg={8}>
                 {newsData?.slice(0, visibleItemCount).map((item, index) => {
                   return (
-                    <div className="textarea my-4">
-                      <div key={index} className="my-2">
+                    <div className="textarea my-4"  key={index}>
+                      <div className="my-2">
                         <div className="listingimgNews">
                           {item?.recentEventImages.map((eachImage, index) => {
                             return (

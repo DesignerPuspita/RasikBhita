@@ -101,7 +101,7 @@ const Project = ({ projects }) => {
           {imageList.map((item, index) => {
             if (selectedCat == "all") {
               return (
-                <Col xs={12} lg={4}>
+                <Col xs={12} lg={4}  key={index}>
                   <div
                     className="galleryWrapImg"
                     onClick={openLightbox.bind("selectedInbox", index)}
@@ -123,7 +123,7 @@ const Project = ({ projects }) => {
               );
             } else if (item.category == selectedCat) {
               return (
-                <Col xs={12} lg={4}>
+                <Col xs={12} lg={4}  key={index}>
                   <div
                     className="galleryWrapImg"
                     onClick={openLightbox.bind("selectedInbox", index)}

@@ -105,7 +105,7 @@ const Footer = () => {
                 <Row>
                     <Col xs={12} lg={4} md={12}>
                         <h2>Sri Sarada Math-Rasik Bhita</h2>
-                        <p>The place is sanctified by the visits of Sri Ramakrishna.This holy place was donated to Sri Sarada Math, Dakshineswar, where the Math authorities started an Educational & Cultural wing, 'Sri Sarada Math - Rasik Bhita' to impart vocational and technical education to the girl students only, with a view to develop their personality combining modernity with tradition.
+                        <p>The place is sanctified by the visits of Sri Ramakrishna.This holy place was donated to Sri Sarada Math, Dakshineswar, where the Math authorities started an Educational & Cultural wing, &apos;Sri Sarada Math - Rasik Bhita&apos; to impart vocational and technical education to the girl students only, with a view to develop their personality combining modernity with tradition.
 
 
                         </p>
