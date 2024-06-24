@@ -118,7 +118,7 @@ const Footer = () => {
               <div className="callnoparentdiv">
                 <div className="callno">
                   <ul>
-                    <li>Dakshineswar: 033-2544-4999/033-2564-9824</li>
+                    <li>Dakshineswar: 033-2544-4999 / 033-2564-9824</li>
                     <li>Dumdum Park: 033-4006-7885</li>
                   </ul>
                 </div>
