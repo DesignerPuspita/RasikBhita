@@ -15,7 +15,7 @@ const NewsListing = ({categoryData,currentYear}) => {
   const [yearWiseNewsData, setYearWiseNewsData] = useState(false);
   const [otherYear, setOtherYear] = useState("");
   const [visibleItemCount, setVisibleItemCount] = useState(5);
-  const [totalNewsCount,SetTotalNewsCount]=useState(0)
+  const [totalNewsCount,setTotalNewsCount]=useState(0)
 
   const [isYear, setIsYear] = useState(currentYear);
 
@@ -36,7 +36,7 @@ const NewsListing = ({categoryData,currentYear}) => {
           YearWiseDataFetchResponse.body.length > 0
         ) {
           setOtherYear(YearWiseDataFetchResponse.body.slice(0,visibleItemCount));
-          SetTotalNewsCount(YearWiseDataFetchResponse.body.length)
+          setTotalNewsCount(YearWiseDataFetchResponse.body.length)
           setYearWiseNewsData(true);
           setLoading(false);
         } else {

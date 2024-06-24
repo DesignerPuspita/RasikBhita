@@ -1,6 +1,8 @@
 const dev = {
   
-  API_ENDPOINT_URL: 'http://182.73.216.94:8443/'};
+    API_ENDPOINT_URL: 'http://182.73.216.94:8443/'
+  // API_ENDPOINT_URL: 'http://182.73.216.91:8443/'
+};
 
 const stag = {
 

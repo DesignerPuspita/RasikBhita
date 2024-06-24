@@ -425,6 +425,7 @@ export async function getServerSideProps() {
   const aboutUs = await HomeService.aboutUs();
   const activitiesquote = await HomeService.activitiesQuote();
   const activities = await HomeService.activities();
+ 
   let filteredActivitis = [];
   if (activities.error == false) {
     activities.body.forEach((element) => {

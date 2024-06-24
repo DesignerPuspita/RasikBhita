@@ -1,19 +1,23 @@
 import React, { useState } from "react";
-import { Row, Col } from "react-bootstrap";
-import { Container } from "react-bootstrap";
+import { Row, Col, Container, Table, Button } from "react-bootstrap";
 import PlacementService from "@/services/Placement";
 import Breadcrumb from "@/component/Breadcrumb";
+import RedButton from "@/component/RedButton";
 
 const Placement = ({ placementData }) => {
   const currentYear = new Date().getFullYear();
   const [YearSelect, setYearSelect] = useState(currentYear);
-
+  const [visibleItemCount, setVisibleItemCount] = useState(50); // Initial number of items to display
   const handleYear = (YearVal) => {
     setYearSelect(YearVal);
   };
 
   // Extract unique years
-  const uniqueYears = [...new Set(placementData.map(item => item.years))];
+  const uniqueYears = [...new Set(placementData.map((item) => item.years))];
+
+  const handleLoadMore = () => {
+    setVisibleItemCount((prevCount) => prevCount + 50); // Increase visible items by 5
+  };
 
   return (
     <>
@@ -21,7 +25,7 @@ const Placement = ({ placementData }) => {
         <Breadcrumb breadCrumbCurrentPage="Placement" pageTitle="Placement" />
       </Container>
       <Container className="placement-cont">
-        <Row>
+        <Row className="mb-4">
           <Col xs={12} lg={4}>
             <p className="mb-0">Select Year</p>
             <select
@@ -39,32 +43,53 @@ const Placement = ({ placementData }) => {
         </Row>
 
         <Row>
-          {placementData.map((item, index) => {
-            if (YearSelect == item.years) {
-              return (
-                <Col key={index} lg={4}>
-                  <div className="student-card">
-                    <div className="studentCardWrapPlacement">
-
-                      <div className="studentCardIMG">
-                        <img src={item?.image} alt="student" />
-                      </div>
-                      <div className="student-card-text">
-                        <h5>{item?.studentname}</h5>
-                        <h6>{item?.occupation}</h6>
-                        <p>{item?.schoolname}</p>
-
-                      </div>
-                    </div>
-
-                    <p>{item?.description}</p>
-                  </div>
-
-                </Col>
-              );
-            }
-          })}
+          <Col xs={12}>
+            <Table striped bordered hover className="main-table">
+              <thead className="table-headings">
+                <tr>
+                  <th style={{ width: "70px" }}>Sr. No</th>
+                  <th>Image</th>
+                  <th>Student Name</th>
+                  <th>Occupation</th>
+                  <th>School Name</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                {placementData
+                  .filter((item) => YearSelect == item.years)
+                  .slice(0, visibleItemCount) // Display up to visibleItemCount
+                  .map((item, index) => (
+                    <tr key={index}>
+                      <td className="text-center">{index + 1}</td>
+                      <td>
+                        <img
+                          src={item?.image}
+                          alt="student"
+                          style={{ width: "50px", height: "50px" }}
+                        />
+                      </td>
+                      <td>{item?.studentname}</td>
+                      <td>{item?.occupation}</td>
+                      <td>{item?.schoolname}</td>
+                      <td>{item?.description}</td>
+                    </tr>
+                  ))}
+              </tbody>
+            </Table>
+          </Col>
         </Row>
+        <Row>
+          <Col xs={12}>
+            {visibleItemCount < placementData.length && (
+              <div className="text-center mt-3 smallRedBtn">
+                <RedButton buttonText="Read More" onClick={handleLoadMore} />
+              </div>
+            )}
+
+          </Col>
+        </Row>
+
       </Container>
     </>
   );
@@ -73,13 +98,13 @@ const Placement = ({ placementData }) => {
 export default Placement;
 
 export async function getServerSideProps() {
-  const currentYear = new Date().getFullYear();
   const placementDataResponse = await PlacementService.placement();
-  const placementData = placementDataResponse.error == false ? placementDataResponse.body : []
+  const placementData =
+    placementDataResponse.error === false ? placementDataResponse.body : [];
 
   return {
     props: {
-      placementData: placementData
-    }
-  }
+      placementData: placementData,
+    },
+  };
 }

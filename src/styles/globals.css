@@ -4963,7 +4963,7 @@ a.google-map-button {
   width: 100%;
   height: 35px;
   padding: 5px 4px;
-  border: 1px solid #EEEFF1;
+  border: 1px solid #c0c3c9;
   border-radius: 5px;
 }
 
@@ -5686,6 +5686,8 @@ a {
 }
 .mtt-2{position:relative; top:10px;}
 /*Puspita*/
+.main-table td{vertical-align:middle;}
+.smallRedBtn .hvr-sweep-to-right{display:inline-block;}
 a.play-btn {
   display: inline-block;
   width: 150px;
