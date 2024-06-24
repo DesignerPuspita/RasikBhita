@@ -81,7 +81,7 @@ const CarousalSlider = ({ data, page }) => {
                             </div>
                         </Card.Body>
                     </Card>
-                    <Button href={`courselist/${item.course_name.replace(/\s+/g, "-")}`} className="button-align hangingBtn" variant="secondary">
+                    <Button href={`/courselist/${item.course_name.replace(/\s+/g, "-")}/${item.course_id}`}className="button-align hangingBtn" variant="secondary">
                         Read More
                     </Button>
                 </Col>
@@ -95,7 +95,7 @@ const CarousalSlider = ({ data, page }) => {
                             </div>
                             <h5>{item.cmsEntity[0].bigHeading}</h5>
                             <div
-                                className="courselist-short-desc"
+                                className="courselist-short-desc pt-3"
                                 dangerouslySetInnerHTML={{ __html: item.cmsEntity[0].courseContent }}
                             ></div>
                             <Button href={`about/${item.storyTableEntity.page_name.replace(/\s+/g, "-")}`} className="button-align" variant="activitesHmBtn">
@@ -122,6 +122,7 @@ const CarousalSlider = ({ data, page }) => {
                             </div>
                         </Card.Body>
                     </Card>
+                    
                 </Col>
             ))}
         </Slider>

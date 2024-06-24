@@ -15,6 +15,7 @@ import {
   
   GalleryService.videos = () => getService(`getvideogallery`);
   GalleryService.images = () => getService(`galleryimage`);
+  GalleryService.pressReview = () => getService(`pressnews`);
 //   GalleryService.cmsSinglePage = (storyId) => getService(`getcms/${storyId}`);
   
   export default GalleryService;

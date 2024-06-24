@@ -18,6 +18,7 @@ const inter = Inter({ subsets: ["latin"] });
 const handleClick = (item) => {
   window.open(item.buttonurl, '_blank');
 };
+
 export default function Home({
   homeCarouselData,
   homeCourseListData,
@@ -29,7 +30,8 @@ export default function Home({
   homeStudentProjectData,
   homeStudentsSayData,
   homeOtherCardAreaData,
-  homeNewsData
+  homeNewsData,
+  bigImageCorporate
 }) {
   return (
     <>
@@ -40,7 +42,7 @@ export default function Home({
               <div>
                 <Carousel>
                   {homeCarouselData?.map((item, index) => {
-                    
+
                     return (
                       <Carousel.Item key={index}>
                         <div className="image-container">
@@ -54,10 +56,10 @@ export default function Home({
                           <h3>{item.bigheading}</h3>
                           <p>
                             {item.shortdesc}
-                            </p> 
-                            <div className="sliderBtn mt-3">
-                                <RedButton buttonText={<><Play/>{item.buttonnmae}</>}  onClick={()=>{handleClick(item)}}/>
-                            </div>  
+                          </p>
+                          <div className="sliderBtn mt-3">
+                            <RedButton buttonText={<><Play />{item.buttonnmae}</>} onClick={() => { handleClick(item) }} />
+                          </div>
                         </Carousel.Caption>
                       </Carousel.Item>
                     );
@@ -65,16 +67,9 @@ export default function Home({
                 </Carousel>
               </div>
             </Col>
+
           </Row>
         </Container>
-
-
-
-
-
-
-
-
 
         <Container className="my-5">
           <Row>
@@ -95,6 +90,16 @@ export default function Home({
 
           <Row className="CourseCards">
             <CarousalSlider page="course" data={homeCourseListData} />
+
+          </Row>
+          <Row>
+            <Col>
+              <div className="rightSideButton">
+                <Link href={"/courselist"}>
+                  <RedButton buttonText="View All Courses" />
+                </Link>
+              </div>
+            </Col>
           </Row>
 
           <Row>
@@ -110,9 +115,6 @@ export default function Home({
             </Col>
           </Row>
         </Container>
-
-
-
 
         <Container fluid className="px-0">
           <Row className="aboutussection mx-0">
@@ -164,14 +166,6 @@ export default function Home({
           </Row>
         </Container>
 
-
-
-
-
-
-
-
-
         <section className="ouractivitiescont">
           <Container className="pad-100">
             <Row className="ouractivitiesrow mb-5">
@@ -180,21 +174,14 @@ export default function Home({
                   <img src="/images/wave.png" alt="wave" /> Our Activities
                 </h6>
                 <h2>{homeOurActivitiesQuoteData?.subdiscription}<span className="redtext"> {homeOurActivitiesQuoteData?.speaker_name}</span> </h2>
-
               </Col>
             </Row>
             <CarousalSlider page="activities" data={homeOurActivitiesData} />
           </Container>
         </section>
 
-
-
-
-
-
         <Container fluid className="px-0">
           <Row className="corporateConnect mx-0">
-
             <Col className="chardzar padnw-100" xs={12} lg={7}>
               <h6>
                 <img src="/images/wave.png" alt="wave" className="mx-2" />
@@ -205,7 +192,6 @@ export default function Home({
               <p className="contentTxtGrey">The house of Rasik in Dakshineswar, now houses the Educational and Cultural unit of Sri Sarada Math - &apos;Sri Sarada Math - Rasik Bhita&apos; which provides vocational and technical education to women.</p>
               <div className="ContentArea py-3">
                 <Row>
-
                   {homeAboutUsData.map((item, index) => {
                     if (item.category == "Corporate_Connect") {
                       return (
@@ -229,14 +215,11 @@ export default function Home({
             </Col>
             <Col className="px-0" xs={12} lg={5}>
               <div className="aboutuspic">
-                <img src="images/leftpic.gif" alt="leftpic" />
+                <img src={bigImageCorporate} alt="leftpic" />
               </div>
             </Col>
-
           </Row>
         </Container>
-
-
 
         <div className="corporatestripcolSection">
           <Container fluid>
@@ -257,7 +240,7 @@ export default function Home({
               <Row>
                 <Col className="studproj">
                   <h6>
-                    <img src="/images/wave.png" alt="wave" /> Students Project
+                    <img src="/images/wave.png" alt="wave" /> Students' Project
                   </h6>
                   <h2>Those that persevere will see the light, sooner or later.</h2>
                 </Col>
@@ -273,8 +256,6 @@ export default function Home({
                     </Col>
                   );
                 })}
-
-
               </Row>
               <Row>
                 <Col xs={12}>
@@ -283,22 +264,17 @@ export default function Home({
                       <RedButton buttonText='View Project' />
                     </Link>
                   </div>
-
                 </Col>
               </Row>
             </Container>
           </section>
         </div>
 
-
-
-
-
-        <Container className="mt-80 pad-70">
+        <Container className="mt-80 pad-70 testimonialCard pb-0">
           <Row>
             <Col className="FirstJob mb-4">
               <h6 className="mb-2">
-                <img src="/images/wave.png" alt="wave" /> Students Say
+                <img src="/images/wave.png" alt="wave" /> Students' Say
               </h6>
               <h3 className="hmTextTitle text-center">How I Got My First Job</h3>
             </Col>
@@ -306,10 +282,12 @@ export default function Home({
           <div>
             <CarousalSlider data={homeStudentsSayData} page="testimonials" />
           </div>
-        </Container>
-
-
-
+          <div className="rightSideButton mt-5">
+            <Link href={"/testimonials"}>
+              <RedButton buttonText="View All Testimonials" />
+            </Link>
+          </div>
+         </Container>
 
         <section className="othercardarea-row">
           <Container>
@@ -351,10 +329,6 @@ export default function Home({
           </Container>
         </section>
 
-
-
-
-
         <Container className="my-5 latestNewsWrap">
           <Row>
             <Col className="DiaryPages">
@@ -380,7 +354,6 @@ export default function Home({
                         <Card.Title className="hmTextTitle">{item.desc_heading}</Card.Title>
                       </div>
 
-
                       <div>
                         <div className="cms-top homepageNewsCrop">
                           <div
@@ -400,20 +373,6 @@ export default function Home({
             })}
           </Row>
         </Container>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       </main>
     </>
   );
@@ -425,7 +384,7 @@ export async function getServerSideProps() {
   const aboutUs = await HomeService.aboutUs();
   const activitiesquote = await HomeService.activitiesQuote();
   const activities = await HomeService.activities();
- 
+
   let filteredActivitis = [];
   if (activities.error == false) {
     activities.body.forEach((element) => {
@@ -440,6 +399,9 @@ export async function getServerSideProps() {
   const miscl = await HomeService.miscSection();
   const homeNews = await HomeService.homeNews();
 
+  // Find the item with category 'Corporate_Connect'
+  const corporateConnectItem = aboutUs.body.find(item => item.category === 'Corporate_Connect');
+  const bigImageCorporate = corporateConnectItem ? corporateConnectItem.big_img_path : '';
 
   return {
     props: {
@@ -447,6 +409,7 @@ export async function getServerSideProps() {
       homeCourseListData: courselist.error == false ? courselist.body : [],
       homeAboutUsData: aboutUs.error == false ? aboutUs.body : [],
       bigImage: aboutUs.error == false ? aboutUs.body[0].big_img_path : "",
+      bigImageCorporate: bigImageCorporate,
       homeOurActivitiesQuoteData: activitiesquote.error == false ? activitiesquote.body[0] : "",
       homeOurActivitiesData: filteredActivitis,
       corporateLogo: corpsLogs.error == false ? corpsLogs.body : [],
@@ -454,7 +417,6 @@ export async function getServerSideProps() {
       homeStudentsSayData: testimonials.error == false ? testimonials.body : [],
       homeOtherCardAreaData: miscl.error == false ? miscl.body : [],
       homeNewsData: homeNews.recentEvents.slice(0, 3)
-
     },
   };
 }

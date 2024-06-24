@@ -118,8 +118,8 @@ const Footer = () => {
               <div className="callnoparentdiv">
                 <div className="callno">
                   <ul>
-                    <li>Dakshineswar: 033-2544-4999</li>
-                    <li>Dumdum Park: 033-4999-2544</li>
+                    <li>Dakshineswar: 033-2544-4999/033-2564-9824</li>
+                    <li>Dumdum Park: 033-4006-7885</li>
                   </ul>
                 </div>
               </div>
@@ -161,7 +161,7 @@ const Footer = () => {
                       <Link href="/placement">Placement</Link>
                     </li>
                     <li>
-                      <Link href="/pressreview">Press Review</Link>
+                      <Link href="/press-review">Press Review</Link>
                     </li>
                   </ul>
                 </Col>
@@ -188,12 +188,14 @@ const Footer = () => {
             <div className="sosIcon">
               <ul className="social-media">
                 <li>
+                <Link href="https://www.facebook.com/rasikbhita.ssp" target="_blank">
                   <Facebook />
+                  </Link>
                 </li>
                 <li>
-                  <a href="https://www.youtube.com/@ssmrbssp" target="_blank">
+                  <Link href="https://www.youtube.com/@ssmrbssp" target="_blank">
                     <Youtube />
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

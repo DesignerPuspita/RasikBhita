@@ -39,9 +39,50 @@ body {
 .srchIcon {
   padding-right: 15px;
 }
-.topbanner .sliderBtn .hvr-sweep-to-right{display:inline-block;}
+.topbanner .sliderBtn .hvr-sweep-to-right{display:inline-block; width:auto;}
+/*Slick Arrow Style*/
+.rightSideButton{display:flex; justify-content:center;}
+/* .CourseCards .slick-arrow{bottom: -73px;} */
 /*Slick Arrow Style*/
 .slick-arrow {
+  position: absolute;
+  top: 50%; /* Center vertically */
+  z-index: 1;
+  background-color: rgba(201, 199, 199, 1);
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-50%); /* Center vertically */
+}
+
+.slick-arrow.prev-arrow {
+  left: 10px; /* Position on the left side */
+}
+
+.slick-arrow.next-arrow {
+  right: 10px; /* Position on the right side */
+}
+
+.slick-arrow svg {
+  width: 24px;
+  height: 24px;
+}
+.ouractivitiescont .slick-arrow.next-arrow {
+  right: 0px;
+}
+.ouractivitiescont .slick-arrow.prev-arrow{
+  left: 0px;
+}
+.testimonialCard .slick-arrow.next-arrow {
+  right: 0px;
+}
+.testimonialCard .slick-arrow.prev-arrow{
+  left: 0px;
+}
+/* .slick-arrow {
   position: absolute;
   bottom: -88px;
   z-index: 1;
@@ -55,21 +96,19 @@ body {
 }
 
 .slick-arrow.next-arrow {
-  left: 44%; /* Center align */
+  left: 44%;
   transform: translateX(60px) translateY(-44%);
 }
 
 .slick-arrow.prev-arrow {
-  left: 44%; /* Center align */
+  left: 44%; 
   transform: translateX(0) translateY(-44%);
 }
 
 .slick-arrow svg {
   width: 24px;
   height: 24px;
-}
-.CourseCards .slick-arrow{bottom: -73px;}
-/*Slick Arrow Style*/
+}  */
 .pad-70{padding-bottom:70px;}
 .courseName p{font-weight:400; color:#6E7075;}
 .carousel-caption p{color:#fff;}
@@ -3285,7 +3324,7 @@ a.nav-link.active {
 
 .CourseCards {
   margin-bottom: 0px;
-  padding-bottom: 42px;
+  padding-bottom: 20px;
 }
 
 .card-body {
@@ -5686,7 +5725,23 @@ a {
 }
 .mtt-2{position:relative; top:10px;}
 /*Puspita*/
+.testimonialDetailspageText{height:76px; overflow:hidden;}
+.testiReadMore{color: #E42032; padding:0 20px; cursor: pointer;}
 .main-table td{vertical-align:middle;}
+.testimonialContent .student-card-text h5 {
+  font-weight: 500;
+  line-height: 24px;
+  margin: 0 0 5px 0;
+  display: block;
+  transition: 0.5s;
+  width: 100%;
+  padding-top: 0;
+  padding-bottom: 10px;
+}
+.testimonialContent .student-card-text p {
+  min-height: auto;
+  padding: 6px 0!important;
+}
 .smallRedBtn .hvr-sweep-to-right{display:inline-block;}
 a.play-btn {
   display: inline-block;
@@ -7009,6 +7064,7 @@ h5.home-course-head {
   margin-top: 20px;
   overflow: hidden;
   font-weight: bold;
+  text-transform:capitalize;
 }
 
 .course-list-short-desc {
@@ -7089,7 +7145,7 @@ h5.home-course-head {
   font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
-  padding-bottom:15px;
+  padding-bottom:0;
 }
 
 .ouractivitiescont .courselist-short-desc p {
@@ -7495,6 +7551,18 @@ nav.bg-body-tertiary.navbar.navbar-expand-lg.navbar-light {
 /*767*/
 
 @media (max-width: 575.98px) {
+  .ouractivitiescol h2 {
+    color: #fff;
+    text-align: center;
+    margin-top: 0px;
+    font-size: 20px;
+    margin-bottom: 0;
+    padding-bottom: 10px;
+    line-height: 30px;
+    padding: 0;
+}
+  .carousel-caption h3{display:none;}
+  .carousel-caption p{display:none;}
   .HeadDescription {
     font-size: 9px;
     color: #E42032;
@@ -7518,7 +7586,7 @@ nav.bg-body-tertiary.navbar.navbar-expand-lg.navbar-light {
   }
 
   .navbar-brand {
-    margin-right: 0;
+    margin-right: 0!important;
   }
 
   .breadCrumbTextArea {
@@ -7904,7 +7972,7 @@ padding:10px; text-align:center;}
   color: #fff;
   border: #E42032;}
 .btn-activitesHmBtn{color:#fff!important;}
-.courselist a{color:#fff;}
+.courselist a{color:#fff; text-transform: capitalize;}
 
 .ripple {
   position: relative;
