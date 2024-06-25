@@ -7551,6 +7551,7 @@ nav.bg-body-tertiary.navbar.navbar-expand-lg.navbar-light {
 /*767*/
 
 @media (max-width: 575.98px) {
+  .topbanner .hvr-sweep-to-right{width:auto;}
   .ouractivitiescol h2 {
     color: #fff;
     text-align: center;

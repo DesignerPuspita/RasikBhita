@@ -11,7 +11,9 @@ import Link from "next/link";
 const CourseDetails = ({ courseDurationMonth, courseDurationYear, courseDetails, courseOption }) => {
   const [courseDetailsError, setCourseDetailsError] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  const handleApply = () =>{
+    window.open('https://docs.google.com/forms/d/e/1FAIpQLSeOGtWKGYI7pLUJz4CBawWymVZZMYrProbRlZtkGA7F01FwNw/viewform?pli=1', '_blank');
+  }
   return (
     <>
       <Head>
@@ -66,7 +68,7 @@ const CourseDetails = ({ courseDurationMonth, courseDurationYear, courseDetails,
                   <p>Course Fee: ₹{courseDetails?.course_fees}</p>
                 </div>
                 <div className="twobuttons">
-                  <RedButton buttonText="Apply Now" />
+                  <RedButton buttonText="Apply Now" onClick={handleApply} />
                 </div>
               </div>
             </Col>

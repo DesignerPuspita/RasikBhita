@@ -47,7 +47,7 @@ const PressReview = ({ imageData }) => {
                 <div className="content">
                   <div className="content-overlay"></div>
                   <div className="galleryWrapImgBox">
-                    <img src={item.gallery_img_path} alt="gallery" />
+                    <img src={item.gallery_img_path} alt={item.gallery_img_path} />
                   </div>
                   <div className="content-details fadeIn-top">
                     <div className="zoomWrap">

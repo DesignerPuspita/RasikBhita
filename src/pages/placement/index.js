@@ -8,16 +8,21 @@ const Placement = ({ placementData }) => {
   const currentYear = new Date().getFullYear();
   const [YearSelect, setYearSelect] = useState(currentYear);
   const [visibleItemCount, setVisibleItemCount] = useState(50); // Initial number of items to display
+
   const handleYear = (YearVal) => {
     setYearSelect(YearVal);
+    setVisibleItemCount(50); // Reset visible items when year changes
   };
 
   // Extract unique years
   const uniqueYears = [...new Set(placementData.map((item) => item.years))];
 
   const handleLoadMore = () => {
-    setVisibleItemCount((prevCount) => prevCount + 50); // Increase visible items by 5
+    setVisibleItemCount((prevCount) => prevCount + 50); // Increase visible items by 50
   };
+
+  // Filter data by selected year
+  const filteredData = placementData.filter((item) => YearSelect == item.years);
 
   return (
     <>
@@ -31,7 +36,7 @@ const Placement = ({ placementData }) => {
             <select
               onChange={(e) => handleYear(e.target.value)}
               className="form-control-search"
-              defaultValue={YearSelect}
+              value={YearSelect}
             >
               {uniqueYears.map((year, index) => (
                 <option key={index} value={year}>
@@ -56,8 +61,7 @@ const Placement = ({ placementData }) => {
                 </tr>
               </thead>
               <tbody>
-                {placementData
-                  .filter((item) => YearSelect == item.years)
+                {filteredData
                   .slice(0, visibleItemCount) // Display up to visibleItemCount
                   .map((item, index) => (
                     <tr key={index}>
@@ -81,15 +85,13 @@ const Placement = ({ placementData }) => {
         </Row>
         <Row>
           <Col xs={12}>
-            {visibleItemCount < placementData.length && (
+            {visibleItemCount < filteredData.length && (
               <div className="text-center mt-3 smallRedBtn">
                 <RedButton buttonText="Read More" onClick={handleLoadMore} />
               </div>
             )}
-
           </Col>
         </Row>
-
       </Container>
     </>
   );
