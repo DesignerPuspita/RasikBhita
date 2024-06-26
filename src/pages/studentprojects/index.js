@@ -13,7 +13,6 @@ import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import { ZoomIn } from "react-feather";
 
 const Project = ({ projects }) => {
-  const video = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
   const captionsRef = React.useRef(null);
   const [imageList, setImageList] = useState([]);
   const [catList, setCatList] = useState([]);
