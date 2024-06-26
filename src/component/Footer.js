@@ -70,7 +70,7 @@ const Footer = () => {
               </div>
               <div className="upcomingeventstext">
                 <h6>Upcoming Events</h6>
-                <p>Check out the link to knowmmore about the upcoming events. Event details
+                <p>Check out the link to know more about the upcoming events. Event details
                   will be displayed as they are updated.
                 </p>
               </div>
