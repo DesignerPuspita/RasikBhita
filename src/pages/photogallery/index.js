@@ -39,7 +39,7 @@ const PhotoGallery = ({ imageData }) => {
           category.push(element.category_name);
         });
         category = [...new Set(category)];
-
+        console.log('category', category);
         let images = [];
         let fullImageObjects = [];
         imageData.forEach((element) => {
