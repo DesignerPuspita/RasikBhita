@@ -308,8 +308,8 @@ export default function Home({
                         <Card.Text className="misleniousBox">{item.description}</Card.Text>
                         <Button
                           href={
-                            item.buttonName == "Appeal Now"
-                              ? "images/Appeal 2020.jpg"
+                            item.buttonName == "Donate Online"
+                              ? "/donate-online"
                               : item.buttonName == "Download PDF"
                                 ? "images/Magazine.pdf"
                                 : item.buttonName == "View More"
