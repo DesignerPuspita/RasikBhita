@@ -13,6 +13,7 @@ import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import { ZoomIn } from "react-feather";
 
 const Project = ({ projects }) => {
+  const video = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
   const captionsRef = React.useRef(null);
   const [imageList, setImageList] = useState([]);
   const [catList, setCatList] = useState([]);
@@ -21,6 +22,7 @@ const Project = ({ projects }) => {
   const [slides, setSlides] = useState([]);
   const [clickedIndex, setClickedIndex] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [videoList, setVideoList] = useState([]);
 
   useEffect(() => {
     const getPhotos = async () => {
@@ -30,6 +32,7 @@ const Project = ({ projects }) => {
       });
       category = [...new Set(category)];
       setCatList(category);
+
       let images = [];
       let fullImageObjects = [];
       projects.forEach((element) => {
@@ -73,8 +76,6 @@ const Project = ({ projects }) => {
       <Container className="my-5">
         <Row>
           <Col className="gallery">
-            {/* <h6><img src='/wave.png' alt="wave"/>Tutorial Session</h6>
-                <h2>Gallery</h2> */}
             <div className="threebuttons">
               <div
                 className={selectedCat == "all" ? "button1" : "button2"}
@@ -101,52 +102,84 @@ const Project = ({ projects }) => {
           {imageList.map((item, index) => {
             if (selectedCat == "all") {
               return (
-                <Col xs={12} lg={4}  key={index}>
-                  <div
-                    className="galleryWrapImg"
-                    onClick={openLightbox.bind("selectedInbox", index)}
-                  >
-                    <div className="content">
-                      <div className="content-overlay"></div>
-                      <div className="galleryWrapImgBox">
-                        <img src={item.image} alt="Project" />
-                      </div>
-                      <div className="content-details fadeIn-top">
-                        <div className="zoomWrap">
-                          <ZoomIn />
+                <Col xs={12} lg={4} key={index}>
+                  {item.type == 'VIDEO' ? (
+                    <div>
+
+                      <iframe
+                        width="100%"
+                        height="200"
+                        src={`https://www.youtube.com/embed/${item.project_video_url.split('v=')[1]}`}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        title={item.videotext}
+                      ></iframe>
+                      <h6 className="gallery-heading-txt">{item.videotext}</h6>
+                    </div>
+                  ) : (
+                    <div
+                      className="galleryWrapImg"
+                      onClick={() => openLightbox(index)}
+                    >
+                      <div className="content">
+                        <div className="content-overlay"></div>
+                        <div className="galleryWrapImgBox">
+                          <img src={item.image} alt="Project" />
+                        </div>
+                        <div className="content-details fadeIn-top">
+                          <div className="zoomWrap">
+                            <ZoomIn />
+                          </div>
                         </div>
                       </div>
+                      <h6 className="gallery-heading-txt">{item.name}</h6>
                     </div>
-                    <h6 className="gallery-heading-txt">{item.name}</h6>
-                  </div>
+                  )}
                 </Col>
               );
             } else if (item.category == selectedCat) {
               return (
-                <Col xs={12} lg={4}  key={index}>
-                  <div
-                    className="galleryWrapImg"
-                    onClick={openLightbox.bind("selectedInbox", index)}
-                  >
-                    <div className="content">
-                      <div className="content-overlay"></div>
-                      <div className="galleryWrapImgBox">
-                        <img src={item.image} alt="Project" />
-                      </div>
-                      <div className="content-details fadeIn-top">
-                        <div className="zoomWrap">
-                          <ZoomIn />
+                <Col xs={12} lg={4} key={index}>
+                  {item.type == 'VIDEO' ? (
+                    <div>
+
+                      <iframe
+                        width="100%"
+                        height="200"
+                        src={`https://www.youtube.com/embed/${item.project_video_url.split('v=')[1]}`}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        title={item.videotext}
+                      ></iframe>
+                      <h6 className="gallery-heading-txt">{item.videotext}</h6>
+                    </div>
+                  ) : (
+                    <div
+                      className="galleryWrapImg"
+                      onClick={() => openLightbox(index)}
+                    >
+                      <div className="content">
+                        <div className="content-overlay"></div>
+                        <div className="galleryWrapImgBox">
+                          <img src={item.image} alt="Project" />
+                        </div>
+                        <div className="content-details fadeIn-top">
+                          <div className="zoomWrap">
+                            <ZoomIn />
+                          </div>
                         </div>
                       </div>
+                      <h6 className="gallery-heading-txt">{item.name}</h6>
                     </div>
-                    <h6 className="gallery-heading-txt">{item.name}</h6>
-                  </div>
+                  )}
                 </Col>
               );
             }
           })}
         </Row>
       </Container>
+
+
 
       <Lightbox
         index={clickedIndex}
@@ -187,6 +220,7 @@ export async function getServerSideProps() {
   return {
     props: {
       projects: projects,
+
     },
   };
 }

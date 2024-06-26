@@ -4498,6 +4498,7 @@ h5 {
   border-radius: 5px;
   margin: 10px;
   cursor: pointer;
+  text-transform:capitalize;
 }
 
 .button2 {
@@ -4510,6 +4511,7 @@ h5 {
   margin: 10px;
   padding: 10px;
   cursor: pointer;
+  text-transform:capitalize;
 }
 
 .button3 {
