@@ -34,7 +34,7 @@ body {
 }
 .stickyBttnn{position:fixed; bottom:97px; right:109px; z-index:99;}
 /*TopBar*/
-
+a{cursor:pointer!important;}
 
 .srchIcon {
   padding-right: 15px;
@@ -4510,7 +4510,7 @@ h5 {
   border-radius: 5px;
   margin: 10px;
   padding: 10px;
-  cursor: pointer;
+  cursor: pointer!important;
   text-transform:capitalize;
 }
 
