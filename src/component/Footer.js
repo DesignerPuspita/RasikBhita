@@ -70,7 +70,9 @@ const Footer = () => {
               </div>
               <div className="upcomingeventstext">
                 <h6>Upcoming Events</h6>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                <p>Check out the link to knowmmore about the upcoming events. Event details
+                  will be displayed as they are updated.
+                </p>
               </div>
               <div className="checknowbutton" onClick={handleShow}>
                 Check Now

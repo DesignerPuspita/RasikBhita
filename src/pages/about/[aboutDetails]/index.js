@@ -93,7 +93,6 @@ export async function getServerSideProps(context){
 
   const storyIdWithoutHyphen = context.query.aboutDetails.replace(/-/g, " ");
   const CMSDataResponse = await CmsService.cmsSinglePage(context.query.aboutDetails);
-
   const cmsEntity = CMSDataResponse.error==false?CMSDataResponse.body.cmsEntity:[]
   const cmsImage = CMSDataResponse.error==false?CMSDataResponse.body.cmsImagestableEntity:[]
   const cmsStoryTableEntity = CMSDataResponse.error==false?CMSDataResponse.body.storyTableEntity:{}
