@@ -11,6 +11,7 @@ import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import { ZoomIn } from "react-feather";
+import Video from "yet-another-react-lightbox/plugins/video";
 
 const Project = ({ projects }) => {
   const captionsRef = React.useRef(null);
@@ -48,7 +49,7 @@ const Project = ({ projects }) => {
       setSlides(images);
     };
     getPhotos();
-  }, [selectedCat]);
+  }, [selectedCat, projects]);
 
   function categoryPress(catName) {
     setLoading(true);
@@ -138,12 +139,11 @@ const Project = ({ projects }) => {
         index={clickedIndex}
         open={open}
         close={() => setOpen(false)}
-        slides={slides.map((slide) => ({
-          src: slide.src,
-          render:
+        slides={slides}
+        render={{
+          slide: (slide) =>
             slide.type === "VIDEO" ? (
-              
-               <iframe
+              <iframe
                 width="100%"
                 height="339"
                 src={`https://www.youtube.com/embed/${slide.videoUrl.split('v=')[1]}`}
@@ -154,13 +154,15 @@ const Project = ({ projects }) => {
             ) : (
               <img src={slide.src} alt={slide.title || ""} />
             ),
-        }))}
-        plugins={[Thumbnails, Zoom]}
+        }}
+        plugins={[Thumbnails, Zoom, Video]}
         on={{
           click: () => {
-            (captionsRef.current?.visible
-              ? captionsRef.current?.hide
-              : captionsRef.current?.show)?.();
+            if (captionsRef.current?.visible) {
+              captionsRef.current?.hide();
+            } else {
+              captionsRef.current?.show();
+            }
           },
         }}
         animation={{ zoom: 500 }}

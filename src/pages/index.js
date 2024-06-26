@@ -185,7 +185,7 @@ export default function Home({
             <Col className="chardzar padnw-100" xs={12} lg={7}>
               <h6>
                 <img src="/images/wave.png" alt="wave" className="mx-2" />
-                Some Demo Text
+                Training & Placement
               </h6>
               <h3 className="hmTextTitle">Sri Sarada Math Rasik Bhita
                 <span> Corporate Connect</span></h3>
