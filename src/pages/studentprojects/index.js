@@ -21,7 +21,7 @@ const Project = ({ projects }) => {
   const [slides, setSlides] = useState([]);
   const [clickedIndex, setClickedIndex] = useState(0);
   const [loading, setLoading] = useState(false);
-  const [videoList, setVideoList] = useState([]);
+
 
   useEffect(() => {
     const getPhotos = async () => {
