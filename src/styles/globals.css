@@ -5148,6 +5148,7 @@ h6.boldTitle {
 .FooterContentArea .upcomingeventstext p {
   font-size: 16px;
   margin-top: 0;
+  line-height: 20px;
 }
 
 .callno ul li {
