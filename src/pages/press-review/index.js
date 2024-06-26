@@ -6,7 +6,7 @@ import Loader from "@/component/Loader";
 
 import React, { useEffect, useState } from "react";
 import GalleryService from "@/services/Gallery";
-import { ZoomIn, ChevronLeft, ChevronRight } from "react-feather";
+import { ZoomIn } from "react-feather";
 import Lightbox from "yet-another-react-lightbox";
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
@@ -14,6 +14,7 @@ import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/plugins/captions.css";
 import Captions from "yet-another-react-lightbox/plugins/captions";
 import "yet-another-react-lightbox/styles.css";
+import Link from 'next/link';
 
 const PressReview = ({ imageData }) => {
   const captionsRef = React.useRef(null);
@@ -27,7 +28,13 @@ const PressReview = ({ imageData }) => {
   const [clickedIndex, setClickedIndex] = useState(0);
   const [catRange, setCatRange] = useState([0, 4]);
 
-
+  useEffect(() => {
+    const formattedSlides = imageData.map((item) => ({
+      src: item.img_path,
+      title: item.img_name,
+    }));
+    setSlides(formattedSlides);
+  }, [imageData]);
 
   function openLightbox(selectedIndex) {
     setClickedIndex(selectedIndex);
@@ -47,7 +54,7 @@ const PressReview = ({ imageData }) => {
                 <div className="content">
                   <div className="content-overlay"></div>
                   <div className="galleryWrapImgBox">
-                    <img src={item.gallery_img_path} alt={item.gallery_img_path} />
+                    <img src={item.img_path} alt={item.img_name} />
                   </div>
                   <div className="content-details fadeIn-top">
                     <div className="zoomWrap">
@@ -55,7 +62,15 @@ const PressReview = ({ imageData }) => {
                     </div>
                   </div>
                 </div>
-                <h6 className="gallery-heading-txt">{item.file_name}</h6>
+                <h6 className="gallery-heading-txt">
+                  {item.textlink == '' ? (
+                    item.img_name
+                  ) : (
+                    <Link href={item.textlink} target="_blank" className="black-color-text">
+                      Read Full Article : {item.img_name}
+                    </Link>
+                  )}
+                </h6>
               </div>
             </Col>
           ))}
@@ -95,14 +110,12 @@ export async function getServerSideProps() {
   const photos = await GalleryService.pressReview();
   console.log('photos', photos);
   const imageData = photos.error === false ? photos.body : [];
-  
+
   return {
     props: {
       imageData: imageData,
-      
     },
   };
 }
 
 export default PressReview;
-

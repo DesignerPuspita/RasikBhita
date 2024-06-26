@@ -20,7 +20,7 @@ const CourseFees = ({ courseFee }) => {
       <Container>
         <Row>
           <Col className="table-col">
-            <Table striped bordered hover className="main-table">
+            <Table striped bordered hover responsive className="main-table">
               <thead className="table-headings">
                 <tr>
                   <th>Course Name</th>

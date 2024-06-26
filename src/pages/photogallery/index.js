@@ -26,6 +26,7 @@ const PhotoGallery = ({ imageData }) => {
   const [slides, setSlides] = useState([]);
   const [clickedIndex, setClickedIndex] = useState(0);
   const [catRange, setCatRange] = useState([0, 4]);
+  const [categoriesPerView, setCategoriesPerView] = useState(4);
 
   useEffect(() => {
     const getPhotos = async () => {
@@ -35,7 +36,7 @@ const PhotoGallery = ({ imageData }) => {
           category.push(element.category_name);
         });
         category = [...new Set(category)];
-        
+
         setCatList(category);
 
         if (category.length > 0) {
@@ -64,6 +65,27 @@ const PhotoGallery = ({ imageData }) => {
     getPhotos();
   }, [selectedCat]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 576) {
+        setCategoriesPerView(2);
+      } else if (window.innerWidth < 768) {
+        setCategoriesPerView(3);
+      } else {
+        setCategoriesPerView(4);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    setCatRange([0, categoriesPerView]);
+  }, [categoriesPerView]);
+
   function categoryPress(catName) {
     setLoading(true);
     setSelectedCat(catName);
@@ -79,15 +101,15 @@ const PhotoGallery = ({ imageData }) => {
 
   function handlePrev() {
     setCatRange((prev) => [
-      Math.max(prev[0] - 4, 0),
-      Math.max(prev[1] - 4, 4),
+      Math.max(prev[0] - categoriesPerView, 0),
+      Math.max(prev[1] - categoriesPerView, categoriesPerView),
     ]);
   }
 
   function handleNext() {
     setCatRange((prev) => [
-      Math.min(prev[0] + 4, catList.length - 4),
-      Math.min(prev[1] + 4, catList.length),
+      Math.min(prev[0] + categoriesPerView, catList.length - categoriesPerView),
+      Math.min(prev[1] + categoriesPerView, catList.length),
     ]);
   }
 

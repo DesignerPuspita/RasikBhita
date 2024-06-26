@@ -49,12 +49,12 @@ const Placement = ({ placementData }) => {
 
         <Row>
           <Col xs={12}>
-            <Table striped bordered hover className="main-table">
+            <Table striped bordered hover responsive className="main-table">
               <thead className="table-headings">
                 <tr>
                   <th style={{ width: "70px" }}>Sr. No</th>
                   <th>Image</th>
-                  <th>Student Name</th>
+                  <th style={{ width: "200px" }}>Student Name</th>
                   <th>Occupation</th>
                   <th>School Name</th>
                   <th>Description</th>
