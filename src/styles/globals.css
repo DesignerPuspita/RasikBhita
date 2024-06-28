@@ -6082,7 +6082,7 @@ background: linear-gradient(0deg, rgba(0,172,238,1) 0%, rgba(2,126,251,1) 100%);
 .topIconBox{width:30px; margin-right:3px;}
 .topIconText{color:#fff; display: flex;}
 .topBarBox{width:100%; position:relative; height:24px; overflow: hidden;}
-.srchBlock h3{font-size:20px; white-space: nowrap; overflow: hidden;text-overflow: ellipsis;}
+.srchBlock h3{font-size:20px; white-space: nowrap; overflow: hidden;text-overflow: ellipsis; text-transform:capitalize;}
 /* .box {
   position: absolute;
   width: 100%;
