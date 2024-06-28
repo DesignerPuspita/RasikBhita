@@ -35,21 +35,31 @@ const Project = ({ projects }) => {
       let images = [];
       let fullImageObjects = [];
       projects.forEach((element) => {
-        if (selectedCat === "all" || selectedCat === element.category) {
-          images.push({
-            src: element.image,
-            title: element.name,
-            type: element.type,
-            videoUrl: element.project_video_url,
-          });
+        if (selectedCat == "all" || selectedCat == element.category) {
+          if (element.type === "VIDEO") {
+            images.push({
+              type: "video",
+              width: 1280,
+              height: 720,
+              sources: [
+                {
+                  src: `https://www.youtube.com/embed/${element.project_video_url.split('v=')[1]}`,
+                  type: "video/mp4",
+                },
+              ],
+              title: element.name,
+            });
+          } else {
+            images.push({ src: element.image, title: element.name });
+          }
           fullImageObjects.push(element);
+          setImageList(fullImageObjects);
         }
       });
-      setImageList(fullImageObjects);
       setSlides(images);
     };
     getPhotos();
-  }, [selectedCat, projects]);
+  }, [selectedCat]);
 
   function categoryPress(catName) {
     setLoading(true);
@@ -78,60 +88,66 @@ const Project = ({ projects }) => {
           <Col className="gallery">
             <div className="threebuttons">
               <div
-                className={selectedCat === "all" ? "button1" : "button2"}
-                onClick={() => categoryPress("all")}
+                className={selectedCat == "all" ? "button1" : "button2"}
+                onClick={categoryPress.bind("catName", "all")}
               >
                 All Category
               </div>
-              {catList.map((item, index) => (
-                <div
-                  key={index}
-                  className={selectedCat === item ? "button1" : "button2"}
-                  onClick={() => categoryPress(item)}
-                >
-                  {item}
-                </div>
-              ))}
+              {catList.map((item, index) => {
+                return (
+                  <div
+                    key={index}
+                    className={selectedCat == item ? "button1" : "button2"}
+                    onClick={categoryPress.bind("catName", item)}
+                  >
+                    {item}
+                  </div>
+                );
+              })}
             </div>
           </Col>
         </Row>
 
         <Row className="rowgallery1">
-          {imageList.map((item, index) => (
-            <Col xs={12} lg={4} key={index}>
-              {item.type === "VIDEO" ? (
-                <div>
-                  <iframe
-                    width="100%"
-                    height="300"
-                    src={`https://www.youtube.com/embed/${item.project_video_url.split('v=')[1]}`}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    title={item.videotext}
-                  ></iframe>
-                  <h6 className="gallery-heading-txt">{item.videotext}</h6>
-                </div>
-              ) : (
-                <div
-                  className="galleryWrapImg"
-                  onClick={() => openLightbox(index)}
-                >
-                  <div className="content">
-                    <div className="content-overlay"></div>
-                    <div className="galleryWrapImgBox">
-                      <img src={item.image} alt="Project" />
+          {imageList.map((item, index) => {
+            if (selectedCat == "all" || item.category == selectedCat) {
+              return (
+                <Col xs={12} lg={4} key={index}>
+                  {item.type == 'VIDEO' ? (
+                    <div>
+                      <iframe
+                        width="100%"
+                        height="200"
+                        src={`https://www.youtube.com/embed/${item.project_video_url.split('v=')[1]}`}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        title={item.videotext}
+                      ></iframe>
+                      <h6 className="gallery-heading-txt">{item.videotext}</h6>
                     </div>
-                    <div className="content-details fadeIn-top">
-                      <div className="zoomWrap">
-                        <ZoomIn />
+                  ) : (
+                    <div
+                      className="galleryWrapImg"
+                      onClick={() => openLightbox(index)}
+                    >
+                      <div className="content">
+                        <div className="content-overlay"></div>
+                        <div className="galleryWrapImgBox">
+                          <img src={item.image} alt="Project" />
+                        </div>
+                        <div className="content-details fadeIn-top">
+                          <div className="zoomWrap">
+                            <ZoomIn />
+                          </div>
+                        </div>
                       </div>
+                      <h6 className="gallery-heading-txt">{item.name}</h6>
                     </div>
-                  </div>
-                  <h6 className="gallery-heading-txt">{item.name}</h6>
-                </div>
-              )}
-            </Col>
-          ))}
+                  )}
+                </Col>
+              );
+            }
+          })}
         </Row>
       </Container>
 
@@ -140,29 +156,12 @@ const Project = ({ projects }) => {
         open={open}
         close={() => setOpen(false)}
         slides={slides}
-        render={{
-          slide: (slide) =>
-            slide.type === "VIDEO" ? (
-              <iframe
-                width="100%"
-                height="339"
-                src={`https://www.youtube.com/embed/${slide.videoUrl.split('v=')[1]}`}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                title={slide.title}
-              ></iframe>
-            ) : (
-              <img src={slide.src} alt={slide.title || ""} />
-            ),
-        }}
         plugins={[Thumbnails, Zoom, Video]}
         on={{
           click: () => {
-            if (captionsRef.current?.visible) {
-              captionsRef.current?.hide();
-            } else {
-              captionsRef.current?.show();
-            }
+            (captionsRef.current?.visible
+              ? captionsRef.current?.hide
+              : captionsRef.current?.show)?.();
           },
         }}
         animation={{ zoom: 500 }}
@@ -186,7 +185,8 @@ export default Project;
 
 export async function getServerSideProps() {
   const projectsRes = await ProjectService.projects();
-  const projects = projectsRes.error === false ? projectsRes.body : [];
+  const projects = projectsRes.error == false ? projectsRes.body : [];
+  console.log('projectsprojectsprojectsprojectsprojectsprojectsprojectsprojectsprojects', projects);
 
   return {
     props: {

@@ -208,6 +208,7 @@ export default PhotoGallery;
 
 export async function getServerSideProps() {
   const photos = await GalleryService.images();
+  console.log('photos', photos);
   const imageData = photos.error == false ? photos.body : [];
 
   return {

@@ -12,8 +12,7 @@ import Carousel from "react-bootstrap/Carousel";
 import CarousalSlider from "@/component/CarousalSlider";
 import RedButton from "@/component/RedButton";
 import Link from 'next/link';
-import { Play } from 'react-feather';
-
+import { Play, Link as LinkIcon } from 'react-feather';
 const inter = Inter({ subsets: ["latin"] });
 const handleClick = (item) => {
   window.open(item.buttonurl, '_blank');
@@ -42,6 +41,7 @@ export default function Home({
               <div>
                 <Carousel>
                   {homeCarouselData?.map((item, index) => {
+                   const ButtonIcon = item.buttonurl.includes("youtube") ? Play : LinkIcon;
 
                     return (
                       <Carousel.Item key={index}>
@@ -58,7 +58,7 @@ export default function Home({
                             {item.shortdesc}
                           </p>
                           <div className="sliderBtn mt-3">
-                            <RedButton buttonText={<><Play />{item.buttonnmae}</>} onClick={() => { handleClick(item) }} />
+                            <RedButton buttonText={<><ButtonIcon />{item.buttonnmae}</>} onClick={() => { handleClick(item) }} />
                           </div>
                         </Carousel.Caption>
                       </Carousel.Item>
@@ -384,7 +384,6 @@ export async function getServerSideProps() {
   const aboutUs = await HomeService.aboutUs();
   const activitiesquote = await HomeService.activitiesQuote();
   const activities = await HomeService.activities();
-
   let filteredActivitis = [];
   if (activities.error == false) {
     activities.body.forEach((element) => {
@@ -417,6 +416,7 @@ export async function getServerSideProps() {
       homeStudentsSayData: testimonials.error == false ? testimonials.body : [],
       homeOtherCardAreaData: miscl.error == false ? miscl.body : [],
       homeNewsData: homeNews.recentEvents.slice(0, 3)
+     
     },
   };
 }
