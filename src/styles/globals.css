@@ -39,6 +39,17 @@ a{cursor:pointer!important;}
 .srchIcon {
   padding-right: 15px;
 }
+.searchicon {
+  padding: 5px 10px;
+  background: #e42032;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  margin-left: 15px;
+  cursor: pointer;
+}
 .topbanner .sliderBtn .hvr-sweep-to-right{display:inline-block; width:auto;}
 /*Slick Arrow Style*/
 .rightSideButton{display:flex; justify-content:center;}
@@ -6161,17 +6172,7 @@ background: linear-gradient(0deg, rgba(0,172,238,1) 0%, rgba(2,126,251,1) 100%);
       opacity: 1;
   }
 } */
-.searchicon {
-  padding: 5px 10px;
-  background: #e42032;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  margin-left: 15px;
-  cursor: pointer;
-}
+
 .m--1 {
   margin: 1px -1px !important;
 }
