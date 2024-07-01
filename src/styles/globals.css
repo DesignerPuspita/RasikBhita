@@ -2896,6 +2896,17 @@ a {
     left: -23px;
     line-height: 23px;
 }
+.searchicon {
+  padding: 5px 10px;
+  background: #e42032;
+  border-radius: 5px;
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  margin-left: 0;
+  cursor: pointer;
+}
   .stickyBttnn {
     position: fixed;
     bottom: 87px;
@@ -5767,7 +5778,7 @@ a.play-btn {
 
 }
 
-.listingCourseName{height:48px; overflow:hidden;padding-top:0!important;}
+.listingCourseName{height:48px; overflow:hidden;padding-top:0!important;text-transform:capitalize;}
 .courselist-short-desc.listingDataCourse{padding-top:5px!important;}
 .listVwBtn{margin-top:14px!important;display:block;}
 .placement-cont .student-card-text p {
@@ -6159,6 +6170,7 @@ background: linear-gradient(0deg, rgba(0,172,238,1) 0%, rgba(2,126,251,1) 100%);
   justify-content: center;
   color: #fff;
   margin-left: 15px;
+  cursor: pointer;
 }
 .m--1 {
   margin: 1px -1px !important;
