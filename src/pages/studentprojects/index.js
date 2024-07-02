@@ -35,7 +35,7 @@ const Project = ({ projects }) => {
       let images = [];
       let fullImageObjects = [];
       projects.forEach((element) => {
-        if (selectedCat == "all" || selectedCat == element.category) {
+        if (selectedCat === "all" || selectedCat === element.category) {
           if (element.type === "VIDEO") {
             images.push({
               type: "video",
@@ -88,8 +88,8 @@ const Project = ({ projects }) => {
           <Col className="gallery">
             <div className="threebuttons">
               <div
-                className={selectedCat == "all" ? "button1" : "button2"}
-                onClick={categoryPress.bind("catName", "all")}
+                className={selectedCat === "all" ? "button1" : "button2"}
+                onClick={() => categoryPress("all")}
               >
                 All Category
               </div>
@@ -97,8 +97,8 @@ const Project = ({ projects }) => {
                 return (
                   <div
                     key={index}
-                    className={selectedCat == item ? "button1" : "button2"}
-                    onClick={categoryPress.bind("catName", item)}
+                    className={selectedCat === item ? "button1" : "button2"}
+                    onClick={() => categoryPress(item)}
                   >
                     {item}
                   </div>
@@ -110,10 +110,10 @@ const Project = ({ projects }) => {
 
         <Row className="rowgallery1">
           {imageList.map((item, index) => {
-            if (selectedCat == "all" || item.category == selectedCat) {
+            if (selectedCat === "all" || item.category === selectedCat) {
               return (
                 <Col xs={12} lg={4} key={index}>
-                  {item.type == 'VIDEO' ? (
+                  {item.type === 'VIDEO' ? (
                     <div>
                       <iframe
                         width="100%"
@@ -185,9 +185,7 @@ export default Project;
 
 export async function getServerSideProps() {
   const projectsRes = await ProjectService.projects();
-  const projects = projectsRes.error == false ? projectsRes.body : [];
-  console.log('projectsprojectsprojectsprojectsprojectsprojectsprojectsprojectsprojects', projects);
-
+  const projects = projectsRes.error === false ? projectsRes.body : [];
   return {
     props: {
       projects: projects,
