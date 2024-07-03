@@ -34,7 +34,7 @@ const CourseFees = ({ courseFee }) => {
                 {courseFee?.map((item, index) => {
                   return (
                     <tr key={index}>
-                      <td>{item?.course_name}</td>
+                      <td className="courseName">{item?.course_name}</td>
                       <td className="courseduration-col">
                         {item.year !== 0 && `${item.year} year `} {item.month}{" "}
                         months

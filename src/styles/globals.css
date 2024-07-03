@@ -33,6 +33,7 @@ body {
   font-size: 14px;
 }
 .stickyBttnn{position:fixed; bottom:97px; right:109px; z-index:99;}
+.courseName{text-transform:capitalize;}
 /*TopBar*/
 a{cursor:pointer!important;}
 
@@ -4000,7 +4001,7 @@ h5 {
   width: 80%;
   height: 150px;
   border-radius: 0 10px 10px 0;
-  padding-left: 50px;
+  padding-left: 28px;
   position: relative;
   z-index: 99;
   top: 0px;
@@ -6849,7 +6850,7 @@ background: linear-gradient(0deg, rgba(0,172,238,1) 0%, rgba(2,126,251,1) 100%);
   padding-top: 0;
   padding-left: 0;
   padding-right: 0;
-  width: 100px;
+  width: 102px;
   /* height: 100px; */
 }
 

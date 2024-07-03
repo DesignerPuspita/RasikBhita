@@ -36,20 +36,15 @@ const Project = ({ projects }) => {
       let fullImageObjects = [];
       projects.forEach((element) => {
         if (selectedCat === "all" || selectedCat === element.category) {
-          if (element.type === "VIDEO") {
-            images.push({
-              type: "video",
-              width: 1280,
-              height: 720,
-              sources: [
-                {
-                  src: `https://www.youtube.com/embed/${element.project_video_url.split('v=')[1]}`,
-                  type: "video/mp4",
-                },
-              ],
-              title: element.name,
-            });
-          } else {
+          if (element.type === "VIDEO" && element.project_video_url.includes("youtube.com")) {
+  images.push({
+    type: "iframe",
+    url: `https://www.youtube.com/embed/${element.project_video_url.split('v=')[1]}`,
+    width: 1280,
+    height: 720,
+    title: element.name,
+  });
+} else {
             images.push({ src: element.image, title: element.name });
           }
           fullImageObjects.push(element);
