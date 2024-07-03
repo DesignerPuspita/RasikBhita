@@ -4,10 +4,10 @@ import {
   API_BASE_URL,
 } from '../constants/common';
 
-// console.log("BASE URL", API_BASE_URL) 
+
 
 const getService = async (url) => {
-  // console.log("url",url)
+
 
   try {
       const responseObj = await fetch(`${API_BASE_URL}${url}`,{
@@ -18,11 +18,11 @@ const getService = async (url) => {
       },
       
     }).then((response) => {
-      // console.log(response.data);
+      
       return response.json()
     })
 
-    // console.log("ResponseObj", responseObj)
+    
     return (
       responseObj
     )
@@ -33,7 +33,6 @@ const getService = async (url) => {
 }
 const getServiceAuthorized = async (url,accessToken) => {
    try {
-    // console.log("--", yourAccessTokenHere)
       const responseObj = await fetch(`${API_BASE_URL}${url}`,{
       method: 'get',
       headers: {
@@ -43,11 +42,11 @@ const getServiceAuthorized = async (url,accessToken) => {
       },
       
     }).then((response) => {
-      // console.log("from token res =======>> ", response.data);
+    
       return response.json()
     })
 
-    // console.log("ResponseObj", responseObj)
+
     return (
       responseObj
     )
@@ -69,11 +68,11 @@ const postService = async (url, payload) => {
       body: JSON.stringify(payload)
       
     }).then((response) => {
-      // console.log("res data", response);
+     
       return response.json()
     })
 
-    // console.log("ResponseObj", responseObj)
+   
     return (
       responseObj
     )
@@ -94,11 +93,8 @@ const postServiceAuthorized = async (url, payload, accessToken) => {
       body: JSON.stringify(payload)
       
     }).then((response) => {
-      // console.log("res data", response);
       return response.json()
     })
-
-    // console.log("ResponseObj", responseObj)
     return (
       responseObj
     )
@@ -119,11 +115,9 @@ const putServiceAuthorized = async (url, payload, accessToken) => {
       body: JSON.stringify(payload)
       
     }).then((response) => {
-      // console.log("res data", response);
+    
       return response.json()
     })
-
-    // console.log("ResponseObj", responseObj)
     return (
       responseObj
     )
@@ -144,11 +138,8 @@ const deleteServiceAuthorized = async (url, payload, accessToken) => {
       body: JSON.stringify(payload)
       
     }).then((response) => {
-      // console.log("res data", response);
       return response.json()
     })
-
-    // console.log("ResponseObj", responseObj)
     return (
       responseObj
     )
@@ -169,23 +160,19 @@ const postServiceFormData = async (url, formdata) => {
       body: formdata
       
     }).then((response) => {
-      // console.log("fd response", response.json());
       return response.json()
     })
-
-    // console.log("ResponseObj", responseObj)
     return (
       responseObj
     )
   } catch(err){
-    // console.log("ERR", err)
     return err;
   }
   
 }
 const postServiceFormDataAuthorized = async (url, formdata, accessToken) => {
   try {
-    // console.log("url",`${API_BASE_URL}${url}`)
+
       const responseObj = await fetch(`${API_BASE_URL}${url}`,{
       method: 'post',
       headers: {
@@ -196,16 +183,13 @@ const postServiceFormDataAuthorized = async (url, formdata, accessToken) => {
       body: formdata
       
     }).then((response) => {
-      // console.log("fd response", response.json());
       return response.json()
     })
 
-    // console.log("ResponseObj", responseObj)
     return (
       responseObj
     )
   } catch(err){
-    // console.log("ERR", err)
     return err;
   }
   

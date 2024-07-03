@@ -39,7 +39,6 @@ const PhotoGallery = ({ imageData }) => {
           category.push(element.category_name);
         });
         category = [...new Set(category)];
-        console.log('category', category);
         let images = [];
         let fullImageObjects = [];
         imageData.forEach((element) => {
@@ -208,7 +207,6 @@ export default PhotoGallery;
 
 export async function getServerSideProps() {
   const photos = await GalleryService.images();
-  console.log('photos', photos);
   const imageData = photos.error == false ? photos.body : [];
 
   return {

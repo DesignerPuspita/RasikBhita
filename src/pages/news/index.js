@@ -52,7 +52,6 @@ const NewsListing = ({categoryData,currentYear}) => {
 
 
   const handleShowMore = () => {
-    // console.log(visibleItemCount);
     setVisibleItemCount((prevCount) => prevCount + 5);
   };
 

@@ -40,7 +40,6 @@ const NewsArchive = ({ categoryData }) => {
           YearWiseDataFetchResponse.error === false &&
           YearWiseDataFetchResponse.body.length > 0
         ) {
-          //console.log('YearWiseDataFetchResponse', YearWiseDataFetchResponse);
           setOtherYear(
             YearWiseDataFetchResponse.body.slice(0, visibleItemCount)
           );

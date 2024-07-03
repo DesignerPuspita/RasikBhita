@@ -29,17 +29,19 @@ const Footer = () => {
     const fetchUpcomingEvents = async () => {
       try {
         const response = await HomeService.upComingEvents();
+        
         if (!response.error && response.body.length > 0) {
           const currentDate = new Date();
           const currentMonth = currentDate.getMonth();
          
-          console.log("Current month (0-based):", currentMonth);
+          
           const currentMonthEvents = response.body.filter(event => {
             const eventDate = new Date(event.date);
+           
             return eventDate.getMonth() === currentMonth;
           });
           setShowCalendarData(currentMonthEvents);
-          console.log('Event Data', JSON.stringify(currentMonthEvents));
+         
         } else {
           setShowCalendarData([]); // Empty array if no events found
         }

@@ -56,7 +56,6 @@ export async function getServerSideProps() {
   try {
     const CourseListDataResponse = await CourseService.courseList();
     if (CourseListDataResponse.error === false) {
-      console.log('CourseListDataResponse', JSON.stringify(CourseListDataResponse));
       return {
         props: {
           courseDetails: CourseListDataResponse.body,
