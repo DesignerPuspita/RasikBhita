@@ -36,7 +36,7 @@ const CustomCalendar = ({ selectedDate, onDateChange, filteredData }) => {
     return (
         <div className="calendar">
             <div className="calendar-header">
-                {/* <button onClick={handlePreviousMonth}><ArrowLeft/></button> */}
+                <button onClick={handlePreviousMonth}><ArrowLeft/></button>
                 <h2>{`${new Intl.DateTimeFormat('en-US', { month: 'long' }).format(currentDate)} ${currentYear}`}</h2>
                 <button onClick={handleNextMonth}><ArrowRight/></button>
             </div>
