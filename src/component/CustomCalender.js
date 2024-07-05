@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, ArrowLeft } from 'react-feather';
+
 const CustomCalendar = ({ selectedDate, onDateChange, filteredData }) => {
     const [currentDate, setCurrentDate] = useState(selectedDate || new Date());
 
@@ -16,6 +17,8 @@ const CustomCalendar = ({ selectedDate, onDateChange, filteredData }) => {
 
     const currentMonth = currentDate.getMonth();
     const currentYear = currentDate.getFullYear();
+    
+    const today = new Date(); // Define today's date here
 
     const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
     const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
@@ -24,6 +27,10 @@ const CustomCalendar = ({ selectedDate, onDateChange, filteredData }) => {
     const emptyDaysArray = Array.from({ length: firstDayOfMonth }, (_, i) => i);
 
     const handlePreviousMonth = () => {
+        if (currentYear === today.getFullYear() && currentMonth === today.getMonth()) {
+            // If current month is the current month, stay on the current month
+            return;
+        }
         const newDate = new Date(currentYear, currentMonth - 1, 1);
         setCurrentDate(newDate);
     };
@@ -36,9 +43,11 @@ const CustomCalendar = ({ selectedDate, onDateChange, filteredData }) => {
     return (
         <div className="calendar">
             <div className="calendar-header">
-                <button onClick={handlePreviousMonth}><ArrowLeft/></button>
+                {!(currentYear === today.getFullYear() && currentMonth === today.getMonth()) && (
+                    <button onClick={handlePreviousMonth}><ArrowLeft /></button>
+                )}
                 <h2>{`${new Intl.DateTimeFormat('en-US', { month: 'long' }).format(currentDate)} ${currentYear}`}</h2>
-                <button onClick={handleNextMonth}><ArrowRight/></button>
+                <button onClick={handleNextMonth}><ArrowRight /></button>
             </div>
             <div className="calendar-body">
                 <div className="calendar-days">
@@ -52,9 +61,10 @@ const CustomCalendar = ({ selectedDate, onDateChange, filteredData }) => {
                     ))}
                     {daysArray.map(day => {
                         const hasEvent = filteredData.some(item => {
-                            return new Date(item.date).toLocaleDateString() === new Date(currentYear, currentMonth, day).toLocaleDateString();
+                            const eventDate = new Date(item.date);
+                            return eventDate.getMonth() === currentMonth && eventDate.getDate() === day && eventDate.getFullYear() === currentYear;
                         });
-                        
+
                         const className = hasEvent ? "calendar-date selectedDate" : "calendar-date";
 
                         return (
