@@ -30,15 +30,14 @@ const Menu = () => {
           setLoading(true);
         }
       } catch (error) {
-        // console.log("CMSDataResponse Data Fetch", error);
+       
       }
 
       try {
         const courseGroupDataResponse = await CourseService.getCourseGroups();
-        console.log('courseGroupDataResponse', courseGroupDataResponse.body);
         setCourseGroups(courseGroupDataResponse.body);
       } catch (error) {
-        // console.log("Course Details Data Fetch", error);
+      
       }
     };
 

@@ -36,7 +36,7 @@ const CustomCalendar = ({ selectedDate, onDateChange, filteredData }) => {
     return (
         <div className="calendar">
             <div className="calendar-header">
-                <button onClick={handlePreviousMonth}><ArrowLeft/></button>
+                {/* <button onClick={handlePreviousMonth}><ArrowLeft/></button> */}
                 <h2>{`${new Intl.DateTimeFormat('en-US', { month: 'long' }).format(currentDate)} ${currentYear}`}</h2>
                 <button onClick={handleNextMonth}><ArrowRight/></button>
             </div>
@@ -54,7 +54,7 @@ const CustomCalendar = ({ selectedDate, onDateChange, filteredData }) => {
                         const hasEvent = filteredData.some(item => {
                             return new Date(item.date).toLocaleDateString() === new Date(currentYear, currentMonth, day).toLocaleDateString();
                         });
-
+                        
                         const className = hasEvent ? "calendar-date selectedDate" : "calendar-date";
 
                         return (

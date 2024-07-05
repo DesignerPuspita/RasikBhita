@@ -6564,7 +6564,7 @@ background: linear-gradient(0deg, rgba(0,172,238,1) 0%, rgba(2,126,251,1) 100%);
 .calendar-date {
   padding: 10px;
   text-align: center;
-  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
 }
 .calendar-date.empty {
   background-color: #fff;
