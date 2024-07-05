@@ -112,7 +112,7 @@ const Project = ({ projects }) => {
                     <div>
                       <iframe
                         width="100%"
-                        height="200"
+                        height="300"
                         src={`https://www.youtube.com/embed/${item.project_video_url.split('v=')[1]}`}
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen

@@ -108,7 +108,6 @@ const PressReview = ({ imageData }) => {
 
 export async function getServerSideProps() {
   const photos = await GalleryService.pressReview();
-  console.log('photos', photos);
   const imageData = photos.error === false ? photos.body : [];
 
   return {

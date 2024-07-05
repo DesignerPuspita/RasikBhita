@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Row, Col, Container, Modal } from "react-bootstrap";
 import { MapPin, PhoneCall, Mail, Book, Facebook, Youtube } from "react-feather";
-import CustomCalender from "../component/CustomCalender";
+import CustomCalendar from "./CustomCalender";
 import HomeService from "../services/Home";
 import Link from "next/link";
 
@@ -29,19 +29,9 @@ const Footer = () => {
     const fetchUpcomingEvents = async () => {
       try {
         const response = await HomeService.upComingEvents();
-        
+        console.log('response', JSON.stringify(response));
         if (!response.error && response.body.length > 0) {
-          const currentDate = new Date();
-          const currentMonth = currentDate.getMonth();
-         
-          
-          const currentMonthEvents = response.body.filter(event => {
-            const eventDate = new Date(event.date);
-           
-            return eventDate.getMonth() === currentMonth;
-          });
-          setShowCalendarData(currentMonthEvents);
-         
+          setShowCalendarData(response.body);
         } else {
           setShowCalendarData([]); // Empty array if no events found
         }
@@ -87,7 +77,7 @@ const Footer = () => {
                   </Modal.Header>
                   <Modal.Body>
                     {showCalendarData.length > 0 ? (
-                      <CustomCalender
+                      <CustomCalendar
                         selectedDate={selectedDate}
                         onDateChange={handleDateChange}
                         filteredData={showCalendarData}
@@ -192,8 +182,8 @@ const Footer = () => {
             <div className="sosIcon">
               <ul className="social-media">
                 <li>
-                <Link href="https://www.facebook.com/rasikbhita.ssp" target="_blank">
-                  <Facebook />
+                  <Link href="https://www.facebook.com/rasikbhita.ssp" target="_blank">
+                    <Facebook />
                   </Link>
                 </li>
                 <li>

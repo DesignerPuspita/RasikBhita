@@ -31,7 +31,6 @@ const SearchResults = () => {
     const fetchData = async () => {
       try {
         const searchResult = await SearchService.searchThis(params.get("q"));
-        console.log("SEARCH RESULT", searchResult);
         if (!searchResult.error) {
           setGalleryVideoData(searchResult.body.GalleryVideoData);
           setCourseData(searchResult.body.CoursesData);

@@ -36,7 +36,9 @@ body {
 .courseName{text-transform:capitalize;}
 /*TopBar*/
 a{cursor:pointer!important;}
-
+.calendar-event-info-wrap{display:flex; justify-content: space-between;padding:10px  10px 0 10px;
+background:#e42032;}
+.calendar-event-info-wrap p{color:#fff;}
 .srchIcon {
   padding-right: 15px;
 }
@@ -3947,6 +3949,7 @@ h5 {
 
 .upcomingevents {
   background: #E42032;
+  /* background: url(/images/wave.png); */
   width: 100%;
   display: flex;
   padding-left: 50px;
@@ -3956,6 +3959,7 @@ h5 {
   position: relative;
   top: -65px;
   justify-content: space-between;
+
 }
 
 .upcomingevents h6 {
@@ -6562,10 +6566,10 @@ background: linear-gradient(0deg, rgba(0,172,238,1) 0%, rgba(2,126,251,1) 100%);
   text-align: center;
   border-bottom: 1px solid #ccc;
 }
-
 .calendar-date.empty {
   background-color: #fff;
 }
+
 
 .image-container {
   position: relative;
