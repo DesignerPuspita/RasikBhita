@@ -30,7 +30,7 @@ const Footer = () => {
     const fetchUpcomingEvents = async () => {
       try {
         const response = await HomeService.upComingEvents();
-        console.log('response', JSON.stringify(response));
+        // console.log('response', JSON.stringify(response));
         if (!response.error && response.body.length > 0) {
           setShowCalendarData(response.body);
         } else {

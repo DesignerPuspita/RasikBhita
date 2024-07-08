@@ -32,12 +32,12 @@ const SearchResults = () => {
       try {
         const searchResult = await SearchService.searchThis(params.get("q"));
         if (!searchResult.error) {
-          setGalleryVideoData(searchResult.body.GalleryVideoData);
-          setCourseData(searchResult.body.CoursesData);
-          setContactUsData(searchResult.body.contactUsData);
-          setCmsActivityData(searchResult.body.cmsActivity);
-          setNewsData(searchResult.body.news);
-          setFound(isEmpty(searchResult.body));
+          setGalleryVideoData(searchResult?.body?.GalleryVideoData);
+          setCourseData(searchResult?.body?.CoursesData);
+          setContactUsData(searchResult?.body?.contactUsData);
+          setCmsActivityData(searchResult?.body?.cmsActivity);
+          setNewsData(searchResult?.body?.news);
+          setFound(isEmpty(searchResult?.body));
         }
       } catch (error) {
         console.error(error);
@@ -201,15 +201,18 @@ const SearchResults = () => {
             <Col xs={12} lg={6} key={index}>
               <div className="search-result">
                 <div>
-                  <h3>{item.bigHeading}</h3>
+                  <h3>{item.cmsEntity.bigHeading}</h3>
                 </div>
-                <div className="srchImgHeightText">
-                  <div>
+                
+                  {/* <div>
                     <div
-                      dangerouslySetInnerHTML={{ __html: item?.courseContent }}
+                      dangerouslySetInnerHTML={{ __html: item?.cmsEntity.courseContent }}
                     ></div>
+                  </div> */}
+                  <div className="srchImgHeight">
+                    <img src={item.cmsImagestableEntity[0]?.cms_body_img_path} alt="image" />
                   </div>
-                </div>
+                
                 <div className="mt-3">
                   <Link className="hvr-sweep-to-right"
                     href={item && item.bigHeading ? `about/${item.bigHeading.replace(/\s+/g, "-")}` : '#'}
