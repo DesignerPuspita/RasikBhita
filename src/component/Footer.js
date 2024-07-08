@@ -4,6 +4,7 @@ import { MapPin, PhoneCall, Mail, Book, Facebook, Youtube } from "react-feather"
 import CustomCalendar from "./CustomCalender";
 import HomeService from "../services/Home";
 import Link from "next/link";
+import RedButton from "./RedButton";
 
 const Footer = () => {
   const [showCalendar, setShowCalendar] = useState(false);
@@ -66,10 +67,16 @@ const Footer = () => {
                   will be displayed as they are updated.
                 </p>
               </div>
-              <div className="checknowbutton" onClick={handleShow}>
+              {/* <div className="checknowbutton" onClick={handleShow}>
                 Check Now
+              </div> */}
+              {/* <a className="checknowbutton" href="/upcoming-events">
+                Check Now
+              </a> */}
+              <div className="checkBtnWrap">
+                  <RedButton buttonText='Check Now' onClick={() => window.location.href = '/upcoming-events'}/>
               </div>
-
+             
               {showCalendar && (
                 <Modal show={show} onHide={handleClose}>
                   <Modal.Header closeButton>

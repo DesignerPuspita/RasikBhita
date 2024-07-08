@@ -3983,16 +3983,23 @@ h5 {
 
 .checknowbutton {
   background: #fff;
-  color: #E42032;
+  color: #E42032!important;
   width: 150px;
   height: 50px;
   text-align: center;
-  font-size: 16px;
+  font-size: 16px!important;
   padding-top: 15px;
-  font-weight: 300;
+  font-weight: 400;
   border-radius: 5px;
   margin-left: 300px;
   margin-top: 5px;
+}
+.checknowbutton:hover{color:#fff!important;}
+.checkBtnWrap .hvr-sweep-to-right{background-color:#fff;color:#e42032;}
+.checkBtnWrap .hvr-sweep-to-right:hover{color:#fff;}
+.checkBtnWrap{
+  width: 225px;
+  margin-left: 354px;
 }
 
 /*corporate hiring strip*/
