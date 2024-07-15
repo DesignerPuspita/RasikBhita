@@ -29,16 +29,12 @@ const Menu = () => {
         } else {
           setLoading(true);
         }
-      } catch (error) {
-       
-      }
+      } catch (error) {}
 
       try {
         const courseGroupDataResponse = await CourseService.getCourseGroups();
         setCourseGroups(courseGroupDataResponse.body);
-      } catch (error) {
-      
-      }
+      } catch (error) {}
     };
 
     fetchData();
@@ -57,7 +53,7 @@ const Menu = () => {
       return;
     }
     setShowSearchBox(false);
-    router.replace(`/search/?q=${searchValue}`);
+    router.push(`/search/?q=${searchValue}`);
     setSearchValue("");
   };
 
@@ -161,7 +157,10 @@ const Menu = () => {
                             <NavDropdown.Item
                               key={innerIndex}
                               className="dropdown-with-items-second-level"
-                              href={`/courselist/${innerItem.course_name.replace(/\s+/g, "-")}/${innerItem.course_id}`}
+                              href={`/courselist/${innerItem.course_name.replace(
+                                /\s+/g,
+                                "-"
+                              )}/${innerItem.course_id}`}
                             >
                               {innerItem.course_name}
                             </NavDropdown.Item>
@@ -170,12 +169,20 @@ const Menu = () => {
                       </NavDropdown>
                     );
                   }
-
                 })}
 
-                <NavDropdown.Item href="/elearning" className="nav-link"> e-Learning</NavDropdown.Item>
-                <NavDropdown.Item href="/coursefee" className="nav-link"> Course Fees Structure</NavDropdown.Item>
-                <NavDropdown.Item href="/studentprojects" className="nav-link"> Student Project</NavDropdown.Item>
+                <NavDropdown.Item href="/elearning" className="nav-link">
+                  {" "}
+                  e-Learning
+                </NavDropdown.Item>
+                <NavDropdown.Item href="/coursefee" className="nav-link">
+                  {" "}
+                  Course Fees Structure
+                </NavDropdown.Item>
+                <NavDropdown.Item href="/studentprojects" className="nav-link">
+                  {" "}
+                  Student Project
+                </NavDropdown.Item>
               </NavDropdown>
               <NavDropdown title="Activities" id="basic-nav-dropdown">
                 {cmsEntity.map((item, index) => {
