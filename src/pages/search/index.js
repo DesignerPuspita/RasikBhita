@@ -47,21 +47,21 @@ const SearchResults = () => {
     fetchData();
   }, [params]);
 
-  useEffect(() => {
-    // Handle browser back button
-    const handlePopState = () => {
-      const initialURL = sessionStorage.getItem("initialPageURL");
-      if (initialURL) {
-        sessionStorage.removeItem("initialPageURL");
-        router.replace(initialURL); // Use router.replace to navigate within Next.js
-      }
-    };
+  // useEffect(() => {
+  //   // Handle browser back button
+  //   const handlePopState = () => {
+  //     const initialURL = sessionStorage.getItem("initialPageURL");
+  //     if (initialURL) {
+  //       sessionStorage.removeItem("initialPageURL");
+  //       router.replace(initialURL); // Use router.replace to navigate within Next.js
+  //     }
+  //   };
 
-    window.addEventListener("popstate", handlePopState);
-    return () => {
-      window.removeEventListener("popstate", handlePopState);
-    };
-  }, [router]);
+  //   window.addEventListener("popstate", handlePopState);
+  //   return () => {
+  //     window.removeEventListener("popstate", handlePopState);
+  //   };
+  // }, [router]);
 
   const getYoutubeVideoId = (url) => {
     const regExp =
