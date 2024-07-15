@@ -82,12 +82,12 @@ const Project = ({ projects }) => {
         <Row>
           <Col className="gallery">
             <div className="threebuttons">
-              <div
+              {/* <div
                 className={selectedCat === "all" ? "button1" : "button2"}
                 onClick={() => categoryPress("all")}
               >
                 All Category
-              </div>
+              </div> */}
               {catList.map((item, index) => {
                 return (
                   <div
