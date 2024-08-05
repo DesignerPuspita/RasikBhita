@@ -8,7 +8,8 @@ const Layout = ({ children }) => {
     <>
     <Topbar/>
     <Menu/>
-    <main>{children}</main>
+    {/* <main>{children}</main> */}
+    {children}
     <Footer/>
     </>
   )

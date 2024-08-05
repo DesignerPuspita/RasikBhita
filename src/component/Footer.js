@@ -48,10 +48,10 @@ const Footer = () => {
     <div className="FooterContentArea">
       <div className="stickyBttnn">
         <Link href="/donate-online" className="play-btn">
-          {" "}
+        
           <span className="donate-txt">
-            <span className="d-block">Donate</span> <span className="d-block">Online</span>{" "}
-          </span>{" "}
+            <span className="d-block">Donate</span> <span className="d-block">Online</span>
+          </span>
         </Link>
       </div>
       <Container>
