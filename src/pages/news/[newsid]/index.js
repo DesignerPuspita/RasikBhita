@@ -91,7 +91,7 @@ const Page = ({ newsData, newsImageData, allNewsData }) => {
 
           <Col xs={12} lg={4}>
             <div className="news-card-recent m-0">
-              <h3 className="subbTitle">Upcoming Events</h3>
+              <h3 className="subbTitle">News</h3>
               {allNewsData.map((item, index) => {
                 return (
                   <div className="news-card-recent-img-box"  key={index}>
